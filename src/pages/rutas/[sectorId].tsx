@@ -12,13 +12,13 @@ function findSector(sectorId: string) {
 export function RoutesPage({ sector }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
-      <Carousel dotPosition="top">
+      <Carousel dotPosition="bottom">
         {
           sector?.routes.map((route, idx) => (
-            <Card key={route.id}
-              cover={
-                <Image src={`${imagesSrcPrefix}${route.imageSrc}`} alt={route.name} width={300} height={600} />
-              }
+            <Card
+              key={route.id}
+              bodyStyle={{ padding: 0 }}
+              bordered={false}
             >
               <Card.Meta 
                 avatar={<Avatar style={{marginTop: 8}} size="large">{idx + 1}</Avatar>}
@@ -30,6 +30,14 @@ export function RoutesPage({ sector }: InferGetStaticPropsType<typeof getStaticP
                     <Typography.Text>{route.height} metros</Typography.Text>
                   </Flex>
                 }
+                style={{ padding: 8, minWidth: 320 }}
+              />
+              <Image 
+                alt={route.name} 
+                src={`${imagesSrcPrefix}${route.imageSrc}`}
+                width={320}
+                height={600}
+                style={{ minWidth: 320, width: "100%", height: "auto" }}
               />
             </Card>
           ))

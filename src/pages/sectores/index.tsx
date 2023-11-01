@@ -18,10 +18,13 @@ export function SectorsPage() {
 
   return (
     <>
-      <Carousel dotPosition="top">
+      <Carousel dotPosition="bottom">
         {
           sectors.map((sector, idx) => (
-            <Card key={sector.id} 
+            <Card
+              key={sector.id} 
+              bodyStyle={{ padding: 0 }}
+              bordered={false}
               actions={[
                 <Link href={`/rutas/${sector.id}`} key={`${sector.id}_routes`}>
                   <Button key={`${sector.id}_enter`} color={colorText} type="link" icon={<ExpandAltOutlined />} styles={{icon: {marginTop: 5}}}>
@@ -29,9 +32,6 @@ export function SectorsPage() {
                   </Button>
                 </Link>
               ]}
-              cover={
-                <Image src={`${imagesSrcPrefix}${getRandomArrayElement(sector.routes).imageSrc}`} alt={sector.name} width={300} height={600} />
-              }
             >
               <Card.Meta 
                 avatar={<Avatar style={{marginTop: 8}} size="large">{idx + 1}</Avatar>}
@@ -39,7 +39,15 @@ export function SectorsPage() {
                 description={
                   <Typography.Text>{sector.routes.length} rutas: {sector.gradeRange.raw}</Typography.Text>
                 }
+                style={{ padding: 8, minWidth: 320 }}
               />
+              <Image 
+                  alt={sector.name} 
+                  src={`${imagesSrcPrefix}${getRandomArrayElement(sector.routes).imageSrc}`} 
+                  width={300} 
+                  height={600} 
+                  style={{ minWidth: 320, width: "100%", height: "auto" }}
+                />
             </Card>
           ))
         }

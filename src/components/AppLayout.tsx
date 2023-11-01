@@ -23,9 +23,9 @@ export function AppLayout({ Component, pageProps, themeMode, setThemeMode }: App
   return (
     <Layout style={{height: "100vh"}}>
       <Layout.Sider trigger={null} collapsedWidth={0} collapsible collapsed={collapsed} style={{background: colorPrimaryBg}} width={320}>
-        <Flex justify="space-around" align="center">
+        <Flex justify="space-between" align="center" style={{paddingRight: 8}}>
           <Image src="/logo3.jpeg" alt="LosRemes Reloaded" height={80} width={80} />
-          <Typography.Title level={4}>
+          <Typography.Title level={4} style={{margin: 0}}>
             Los Remes Reloaded
           </Typography.Title>
         </Flex>
@@ -56,7 +56,7 @@ export function AppLayout({ Component, pageProps, themeMode, setThemeMode }: App
               height: 64,
             }}
           />
-          <Typography.Title level={3} style={{ display: "inline", color: colorText, margin: 16 }}>
+          <Typography.Title level={3} style={{ display: "inline", color: colorText, margin: 0 }}>
             {pageProps.name}
           </Typography.Title>
           </Layout.Header> 
