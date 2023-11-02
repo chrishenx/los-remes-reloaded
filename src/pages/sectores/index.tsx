@@ -1,5 +1,5 @@
-import { Avatar, Button, Card, Carousel, Typography, theme } from 'antd';
-import { sectors } from '@/lib/los-remes.json';
+import { Avatar, Button, Card, Carousel, Flex, Typography, theme } from 'antd';
+import sectors from '@/lib/los-remes.json';
 import Image from 'next/image';
 import { ExpandAltOutlined } from '@ant-design/icons';
 import Link from 'next/link';
@@ -25,17 +25,19 @@ export function SectorsPage() {
               key={sector.id} 
               bodyStyle={{ padding: 0 }}
               bordered={false}
-              actions={[
-                <Link href={`/rutas/${sector.id}`} key={`${sector.id}_routes`}>
-                  <Button key={`${sector.id}_enter`} color={colorText} type="link" icon={<ExpandAltOutlined />} styles={{icon: {marginTop: 5}}}>
-                    Entrar
-                  </Button>
-                </Link>
-              ]}
             >
               <Card.Meta 
                 avatar={<Avatar style={{marginTop: 8}} size="large">{idx + 1}</Avatar>}
-                title={`${sector.name}`} 
+                title={
+                  <Flex justify="space-between">
+                    <Typography.Text style={{color: colorText}}>{sector.name}</Typography.Text>
+                    <Link href={`/rutas/${sector.id}`} key={`${sector.id}_routes`}>
+                      <Button key={`${sector.id}_enter`} color={colorText} type="primary" icon={<ExpandAltOutlined />}>
+                        Entrar
+                      </Button>
+                    </Link>
+                  </Flex>
+                }
                 description={
                   <Typography.Text>{sector.routes.length} rutas: {sector.gradeRange.raw}</Typography.Text>
                 }
