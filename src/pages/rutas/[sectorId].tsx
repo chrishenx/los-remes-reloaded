@@ -1,7 +1,10 @@
-import { Avatar, Card, Carousel, Flex, Typography } from 'antd';
-import { sectors } from '@/lib/los-remes.json';
+import { Avatar, Button, Card, Carousel, Flex, Typography } from 'antd';
+import sectors from '@/lib/los-remes.json';
 import Image from 'next/image';
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
+import { PageProps } from '@/types/pageProps';
+import { RollbackOutlined } from '@ant-design/icons';
+import Link from 'next/link';
 
 const imagesSrcPrefix = "https://www.losremes.com/";
 
@@ -22,7 +25,21 @@ export function RoutesPage({ sector }: InferGetStaticPropsType<typeof getStaticP
             >
               <Card.Meta 
                 avatar={<Avatar style={{marginTop: 8}} size="large">{idx + 1}</Avatar>}
-                title={`${route.name}`} 
+                title={
+                  <Flex justify="space-between">
+                    <Typography.Text>{route.name}</Typography.Text>
+                    <Link href={`/sectores?focus_sector_id=${sector.id}`} key={`${sector.id}_routes`}>
+                      <Button 
+                        key={`${route.id}_gobackto_${sector.id}`} 
+                        type="default" 
+                        icon={<RollbackOutlined />}
+                        style={{fontSize: '0.8em'}}
+                      >
+                        {sector.name}
+                      </Button>
+                    </Link>
+                  </Flex>
+                }
                 description={
                   <Flex justify="space-between">
                     <Typography.Text>{route.grade.raw}</Typography.Text>
@@ -35,7 +52,7 @@ export function RoutesPage({ sector }: InferGetStaticPropsType<typeof getStaticP
               <Image 
                 alt={route.name} 
                 src={`${imagesSrcPrefix}${route.imageSrc}`}
-                width={320}
+                width={300}
                 height={600}
                 style={{ minWidth: 320, width: "100%", height: "auto" }}
               />
@@ -58,7 +75,7 @@ export const getStaticProps = ((context) => {
   };
 }) satisfies GetStaticProps<{
   sector: LosRemesSector | undefined;
-}>;
+} & PageProps>;
 
 export const getStaticPaths = (() => {
   return {

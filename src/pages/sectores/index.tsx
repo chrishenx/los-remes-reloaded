@@ -3,6 +3,11 @@ import sectors from '@/lib/los-remes.json';
 import Image from 'next/image';
 import { ExpandAltOutlined } from '@ant-design/icons';
 import Link from 'next/link';
+import { GetStaticProps } from 'next';
+import { PageProps } from '@/types/pageProps';
+import { useEffect, useRef } from 'react';
+import { CarouselRef } from 'antd/es/carousel';
+import { useRouter } from 'next/router';
 
 const imagesSrcPrefix = "https://www.losremes.com/";
 
@@ -16,9 +21,19 @@ export function SectorsPage() {
     token: { colorText },
   } = theme.useToken();
 
+  const router = useRouter();
+  const carouselRef = useRef<CarouselRef>(null);
+
+
+  useEffect(() => {
+    if (router.query?.focus_sector_id) {
+      carouselRef.current?.goTo(sectors.findIndex(sector => sector.id === router.query.focus_sector_id));
+    }
+  }, [router.query?.focus_sector_id]);
+
   return (
     <>
-      <Carousel dotPosition="bottom">
+      <Carousel dotPosition="bottom" ref={carouselRef} >
         {
           sectors.map((sector, idx) => (
             <Card
@@ -58,13 +73,15 @@ export function SectorsPage() {
   );
 }
 
-export const getStaticProps = () => {
+export const getStaticProps = (() => {
   return {
     props: {
-      name: "Sectores"
-    }
+      name: "Sectores",
+    },
   };
-};
+}) satisfies GetStaticProps<{
+  focusedSectorId?: string | undefined;
+} & PageProps>;
 
 export default SectorsPage;
 
