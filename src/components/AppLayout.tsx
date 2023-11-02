@@ -1,4 +1,4 @@
-import { Button, Flex, Layout, Menu, MenuTheme, Typography, theme } from 'antd';
+import { Button, Drawer, Flex, Layout, Menu, MenuTheme, Typography, theme } from 'antd';
 import { AppProps } from 'next/app';
 import Image from 'next/image';
 import { Dispatch, SetStateAction, useState } from 'react';
@@ -9,6 +9,8 @@ import {
 import { BsFillMoonStarsFill, BsFillSunFill } from 'react-icons/bs';
 import { PageProps } from '@/types/pageProps';
 import Link from 'next/link';
+
+const { Header, Content } = Layout;
 
 type AppLayoutProps = {
   themeMode: MenuTheme;
@@ -23,15 +25,30 @@ export function AppLayout({ Component, pageProps, themeMode, setThemeMode }: App
 
   return (
     <Layout style={{height: "100vh"}}>
-      <Layout.Sider trigger={null} collapsedWidth={0} collapsible collapsed={collapsed} style={{background: colorPrimaryBg}} width={320}>
-        <Flex justify="space-between" align="center" style={{paddingRight: 8}}>
-          <Link href="/">
-            <Image src="/logo3.jpeg" alt="LosRemes Reloaded" height={80} width={80} />
-          </Link>
-          <Typography.Title level={4} style={{margin: 0}}>
-            Los Remes Reloaded
-          </Typography.Title>
-        </Flex>
+      <Drawer
+        title={
+          <Flex justify="space-between" align="center" gap="small" style={{paddingRight: 8}}>
+            <Link href="/">
+              <Image src="/logos-dall-e-2.png" alt="LosRemes Reloaded" height={70} width={70} />
+            </Link>
+            <Typography.Title level={4} style={{margin: 0}}>
+              Los Remes Reloaded
+            </Typography.Title>
+            <Button 
+              type="text"
+              icon={<MenuFoldOutlined />}
+              onClick={() => setCollapsed(true)}
+            />
+          </Flex>
+        }
+        closeIcon={null}
+        onClose={() => setCollapsed(true)}
+        width={320}
+        open={!collapsed}
+        placement="left"
+        styles={{ header: { padding: 0 } }}
+        style={{ background: colorPrimaryBg, padding: 0 }}
+      >
         <Menu theme={themeMode} mode="inline" items={
           [
             {
@@ -44,26 +61,25 @@ export function AppLayout({ Component, pageProps, themeMode, setThemeMode }: App
           ]
         }>
         </Menu>
-      </Layout.Sider>
+      </Drawer>
       <Layout>
-        <Layout.Header style={{ background: colorPrimaryBg, padding: 0 }}>
+        <Header style={{ background: colorPrimaryBg, padding: 0 }}>
           <Button
             type="text"
             icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
             onClick={() => setCollapsed(!collapsed)}
             style={{
               fontSize: '16px',
-              width: 64,
-              height: 64,
+              width: '58px',
             }}
           />
           <Typography.Title level={3} style={{ display: "inline", color: colorText, margin: 0, marginLeft: 4 }}>
             {pageProps.name}
           </Typography.Title>
-          </Layout.Header> 
-        <Layout.Content style={{ background: colorBgContainer }}>
+        </Header> 
+        <Content style={{ background: colorBgContainer }}>
           <Component {...pageProps} />
-        </Layout.Content>
+        </Content>
       </Layout>
     </Layout>
   );

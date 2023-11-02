@@ -6,7 +6,7 @@ import type { DocumentContext } from 'next/document';
 const AppDocument = () => (
   <Html lang="es">
     <Head />
-    <body style={{margin: 0}}>
+    <body style={{ margin: 0 }}>
       <Main />
       <NextScript />
     </body>

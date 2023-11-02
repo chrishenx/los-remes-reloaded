@@ -59,12 +59,12 @@ export function SectorsPage() {
                 style={{ padding: 8, minWidth: 320 }}
               />
               <Image 
-                  alt={sector.name} 
-                  src={`${imagesSrcPrefix}${getRandomArrayElement(sector.routes).imageSrc}`} 
-                  width={300} 
-                  height={600} 
-                  style={{ minWidth: 320, width: "100%", height: "auto" }}
-                />
+                alt={sector.name} 
+                src={`${imagesSrcPrefix}${getRandomArrayElement(sector.routes).imageSrc}`} 
+                width={300} 
+                height={600} 
+                style={{ minWidth: 320, width: "100%", height: "auto" }}
+              />
             </Card>
           ))
         }
