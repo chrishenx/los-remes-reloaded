@@ -109,7 +109,7 @@ async function scrapeLosRemes() {
     console.log("Fetchig los remes sectors...");
     const rawSectors = await fetchLosRemesSectors();
     const sectors = await parseLosRemesSectors(rawSectors);
-    const sectorsJson = JSON.stringify({ sectors }, null, 2);
+    const sectorsJson = JSON.stringify(sectors, null, 2);
     console.log("Writing los remes sectors to file...");
     await fs.promises.writeFile(SECTORS_FILE_PATH, sectorsJson, 'utf8');
     console.log("Done!");
