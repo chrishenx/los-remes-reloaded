@@ -4,12 +4,19 @@ import { ConfigProvider, MenuTheme, theme as antdTheme } from 'antd';
 import { AppProps } from 'next/app';
 import { useState } from 'react';
 
+import "./global.css";
+import { ThemeModeProvider, defaultThemeMode } from '@/components/ThemeModeContext';
+
 export function App(props: AppProps) {
-  const [themeMode, setThemeMode] = useState<MenuTheme>('light');
+  // TODO add to Context
+  const [themeMode, setThemeMode] = useState<MenuTheme>(defaultThemeMode);
+  const toggleThemeMode = () => setThemeMode(themeMode === 'light' ? 'dark' : 'light');
 
   return (
     <ConfigProvider theme={{...theme, algorithm: themeMode === 'light' ? antdTheme.defaultAlgorithm : antdTheme.darkAlgorithm}}>
-      <AppLayout {...props} themeMode={themeMode} setThemeMode={setThemeMode} />
+      <ThemeModeProvider themeMode={themeMode} toggleThemeMode={toggleThemeMode}>
+        <AppLayout {...props} />
+      </ThemeModeProvider>
     </ConfigProvider>
   );
 }
