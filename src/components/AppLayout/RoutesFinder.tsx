@@ -1,5 +1,6 @@
 import sectors from "@/lib/los-remes.json";
 import { Button, Flex, Select, SelectProps, Slider, Typography, theme } from "antd";
+import { useRouter } from "next/router";
 import { useState } from "react";
 
 const grades = ["8", "9+", "10-", "10+", "11-", "11+", "12-", "12+", "13-", "13+", "14-"];
@@ -13,6 +14,7 @@ export function RoutesFinder() {
     token: { colorBgElevated },
   } = theme.useToken();
 
+  const router = useRouter();
 
   const options: SelectProps['options'] = sectors.map(sector => ({ label: sector.name, value: sector.id }));
   const [selectedSectorIds, setSelectedSectorIds] = useState<string[]>([]);
@@ -23,6 +25,17 @@ export function RoutesFinder() {
 
   const handleSectorSelectorChange = (value: string[]) => {
     setSelectedSectorIds(value);
+  };
+
+  const handleRouteSearch = () => {
+    router.push({
+      pathname: '/rutas/buscador',
+      query: {
+        sector_ids: selectedSectorIds,
+        min_grade: mappedGradeRange[0],
+        max_grade: mappedGradeRange[1]
+      }
+    });
   };
 
   return (
@@ -60,7 +73,7 @@ export function RoutesFinder() {
         />
       </div>
       <div style={{ textAlign: "center" }}>
-        <Button type="primary">Buscar</Button>
+        <Button type="primary" onClick={handleRouteSearch}>Buscar</Button>
       </div>
     </Flex>
   );

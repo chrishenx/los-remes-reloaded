@@ -1,6 +1,8 @@
 import fetch from 'node-fetch';
 import fs from 'fs';
 import * as tg from 'generic-type-guard';
+import { LosRemesRoute, LosRemesSector } from '@/types/los-remes-sectors';
+import { parseGrade, parseGrandeRange } from '@/lib/climbing-utils';
 
 const SECTORS_FILE_PATH = './src/lib/los-remes.json';
 
@@ -35,25 +37,6 @@ const isRawRoute: tg.TypeGuard<RawRoute> = (obj: unknown): obj is RawRoute => {
     tg.hasProperty('numberOfDraws', tg.isNumber)(obj) && 
     tg.hasProperty('height', tg.isNumber)(obj);
 };
-
-function parseGrade(rawGrade: string): ClimbingGrade {
-  const withoutNoise = rawGrade.replace(/5\./g, '');
-  const number = Number.parseInt(withoutNoise) ?? 0;
-  const letter = withoutNoise.replace(/\d+/, '');
-
-  return {
-    raw: rawGrade,
-    number: Number.isNaN(number) ? 0 : number,
-    letter,
-  };
-}
-
-function parseGrandeRange(rawGradeRange: string): LosRemesSector['gradeRange'] {
-  const [rawMin, rawMax] = rawGradeRange.split(' a ');
-  const min = parseGrade(rawMin);
-  const max = parseGrade(rawMax);
-  return { min, max, raw: rawGradeRange };
-}
 
 function findImageSrcInRawSectors(rawSectors: string, routeId: string): string | undefined {
   const imageSrcRegex = new RegExp(`img\\/${routeId}\\..{8}\\.jpg`, 'g');

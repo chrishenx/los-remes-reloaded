@@ -5,6 +5,7 @@ import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 import { PageProps } from '@/types/pageProps';
 import { RollbackOutlined } from '@ant-design/icons';
 import Link from 'next/link';
+import { LosRemesSector } from '@/types/los-remes-sectors';
 
 const imagesSrcPrefix = "https://www.losremes.com/";
 

@@ -1,10 +1,10 @@
-type ClimbingGrade = {
+export type ClimbingGrade = {
   raw: string;
   number: number;
   letter: string;
 };
 
-type LosRemesRoute = {
+export type LosRemesRoute = {
   id: string;
   name: string;
   grade: ClimbingGrade;
@@ -13,13 +13,15 @@ type LosRemesRoute = {
   imageSrc?: string;
 };
 
-type LosRemesSector = {
+export type ClimbingGradeRange = {
+  raw: string;
+  min: ClimbingGrade;
+  max: ClimbingGrade;
+};
+
+export type LosRemesSector = {
   id: string;
   name: string;
-  gradeRange: {
-    raw: string;
-    min: ClimbingGrade;
-    max: ClimbingGrade;
-  },
+  gradeRange: ClimbingGradeRange,
   routes: LosRemesRoute[];
 };
