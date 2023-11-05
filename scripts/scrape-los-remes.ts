@@ -2,7 +2,7 @@ import fetch from 'node-fetch';
 import fs from 'fs';
 import * as tg from 'generic-type-guard';
 import { LosRemesRoute, LosRemesSector } from '@/types/los-remes-sectors';
-import { parseGrade, parseGrandeRange } from '@/lib/climbing-utils';
+import { parseGrade, parseGradeRange } from '@/lib/climbing-utils';
 
 const SECTORS_FILE_PATH = './src/lib/los-remes.json';
 
@@ -60,7 +60,7 @@ async function parseLosRemesSectors(rawSectors: string): Promise<LosRemesSector[
     return {
       id: sector.id,
       name: sector.name,
-      gradeRange: parseGrandeRange(sector.gradeRange),
+      gradeRange: parseGradeRange(sector.gradeRange),
       routes: sector.routes.map((route: unknown): LosRemesRoute => {
         if (!isRawRoute(route)) {
           throw new Error(`Invalid route: ${route}`);
