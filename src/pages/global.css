@@ -3,3 +3,27 @@
 .ant-menu-title-content {
   overflow: auto!important;
 }
+
+.ant-slider-handle:before {
+  height: 25px!important;
+  width: 25px!important;
+  inset-inline-start: -4px!important;
+  inset-block-start: -5px!important;
+}
+
+.ant-slider-handle:before {
+  inset-inline-start: 4px!important;
+  inset-block-start: -5px!important;
+}
+
+.ant-slider-handle:after {
+  width: 20px!important;
+  height: 20px!important;
+  inset-inline-start: -4px!important;
+  inset-block-start: -5px!important;
+}
+
+.ant-slider-handle:hover::after {
+  inset-inline-start: 4px!important;
+  inset-block-start: -5px!important;
+}

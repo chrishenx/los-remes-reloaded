@@ -90,7 +90,7 @@ export function RoutesFinderForm({ onSearchClicked }: RoutesFinderProps) {
               <>Grado entre <strong>5.{mappedGradeRange[0]}</strong> y <strong>5.{mappedGradeRange[1]}</strong></>
           }
         </Typography.Text>
-        <div style={{ paddingLeft: 20 }}>
+        <div style={{ paddingLeft: 20, paddingRight: 10 }}>
           <Slider
             min={0}
             max={gradesCatalog.length - 1}
@@ -99,7 +99,6 @@ export function RoutesFinderForm({ onSearchClicked }: RoutesFinderProps) {
             value={selectedGradeRange}
             onChange={(value: number[]) => setSelectedGradeRange(value as [number, number])}
             tooltip={{ formatter: gradeIndexToGrade }}
-            style={{ overflow: "visible" }}
           />
         </div>
       </div>
