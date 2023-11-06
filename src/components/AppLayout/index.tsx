@@ -19,7 +19,7 @@ export function AppLayout({ Component, pageProps }: AppLayoutProps) {
   } = theme.useToken();
 
   return (
-    <Layout style={{height: "100vh"}}>
+    <Layout style={{ height: "100vh" }}>
       <AppDrawer collapsed={collapsed} onCollapse={() => setCollapsed(true)} />
       <Layout>
         <Header style={{ background: colorPrimaryBg, padding: 0 }}>
