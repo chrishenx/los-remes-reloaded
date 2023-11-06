@@ -27,7 +27,7 @@ export const getServerSideProps = (async (context) => {
   return {
     props: {
       name: pageName,
-      sectors: sectors.filter(sector => sectorIds.has(sector.id)),
+      sectors: sectorIds.size === 0 ? sectors : sectors.filter(sector => sectorIds.has(sector.id)),
       gradeRange: {
         raw: `${rawMinGrade} a ${rawMaxGrade}`,
         min: minGrade,
