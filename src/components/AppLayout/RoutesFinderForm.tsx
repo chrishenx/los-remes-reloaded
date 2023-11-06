@@ -2,13 +2,16 @@ import { parseRoutesSearchParams } from "@/lib/climbing-utils";
 import sectors from "@/lib/los-remes.json";
 import { Button, Flex, Select, SelectProps, Slider, Typography, theme } from "antd";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const gradesCatalog = ["8", "9+", "10-", "10+", "11-", "11+", "12-", "12+", "13-", "13+", "14-"];
+const defaultGradeMinIndex = 0;
+const defaultGradeMaxIndex = gradesCatalog.length - 1;
 
 // TODO Handle grades with letters using the refactored class ClimbingGrade from src/lib/climbing-utils.tsx
-function gradeToGradeIndex(grade: string) {
-  return gradesCatalog.indexOf(grade);
+function gradeToGradeIndex(grade: string, defaultValue: number) {
+  const foundIndex = gradesCatalog.indexOf(grade);
+  return foundIndex >= 0 ? foundIndex : defaultValue;
 }
 
 function gradeIndexToGrade(gradeIndex: number | undefined) {
@@ -26,14 +29,24 @@ export function RoutesFinderForm({ onSearchClicked }: RoutesFinderProps) {
 
   const router = useRouter();
 
-  const initialSearchParams = parseRoutesSearchParams(router.query);
-  const initialSelectedSectorIds = initialSearchParams.sectors.map(sector => sector.id);
-  const initialGradeRangeMinIndex = initialSearchParams.gradeRange?.min ? gradeToGradeIndex(initialSearchParams.gradeRange.min.raw) : 0;
-  const initialGradeRangeMaxIndex = initialSearchParams.gradeRange?.max ? gradeToGradeIndex(initialSearchParams.gradeRange.max.raw) : gradesCatalog.length - 1;
-
   const options: SelectProps['options'] = sectors.map(sector => ({ label: sector.name, value: sector.id }));
-  const [selectedSectorIds, setSelectedSectorIds] = useState<string[]>(initialSelectedSectorIds);
-  const [selectedGradeRange, setSelectedGradeRange] = useState<[number, number]>([initialGradeRangeMinIndex, initialGradeRangeMaxIndex]);
+  const [selectedSectorIds, setSelectedSectorIds] = useState<string[]>([]);
+  const [selectedGradeRange, setSelectedGradeRange] = useState<[number, number]>([defaultGradeMinIndex, defaultGradeMaxIndex]);
+
+  useEffect(() => {
+    const parsedSearchParams = parseRoutesSearchParams(router.query);
+    const sectorIds = parsedSearchParams.sectors.map(sector => sector.id);
+    const gradeRangeMinIndex = parsedSearchParams.gradeRange?.min ? 
+      gradeToGradeIndex(parsedSearchParams.gradeRange.min.raw, defaultGradeMinIndex) : 
+      defaultGradeMinIndex;
+    const gradeRangeMaxIndex = parsedSearchParams.gradeRange?.max ? 
+      gradeToGradeIndex(parsedSearchParams.gradeRange.max.raw, defaultGradeMaxIndex) : 
+      defaultGradeMaxIndex;
+
+    setSelectedSectorIds(sectorIds);
+    setSelectedGradeRange([gradeRangeMinIndex, gradeRangeMaxIndex]);
+    
+  }, [router.query, router.query.sector_ids, router.query.min_grade, router.query.max_grade]);
 
   const mappedGradeRange = selectedGradeRange.map(gradeIndexToGrade);
   const isAllGradesSelected = selectedGradeRange[0] === 0 && selectedGradeRange[1] === gradesCatalog.length - 1;
