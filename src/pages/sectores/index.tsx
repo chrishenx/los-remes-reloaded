@@ -3,20 +3,16 @@ import sectors from '@/lib/los-remes.json';
 import Image from 'next/image';
 import { ExpandAltOutlined } from '@ant-design/icons';
 import Link from 'next/link';
-import { GetStaticProps } from 'next';
+import { GetStaticProps, InferGetServerSidePropsType } from 'next';
 import { PageProps } from '@/types/pageProps';
 import { useEffect, useRef } from 'react';
 import { CarouselRef } from 'antd/es/carousel';
 import { useRouter } from 'next/router';
+import { getSectorImages } from './helpers';
 
 const imagesSrcPrefix = "https://www.losremes.com/";
 
-function getRandomArrayElement<T>(arr: Array<T>): T  {
-  const el = arr[Math.floor(Math.random() * arr.length)];
-  return el;
-}
-
-export function SectorsPage() {
+export function SectorsPage({ sectorImages }: InferGetServerSidePropsType<typeof getStaticProps>) {
   const {
     token: { colorText },
   } = theme.useToken();
@@ -60,7 +56,7 @@ export function SectorsPage() {
               />
               <Image 
                 alt={sector.name} 
-                src={`${imagesSrcPrefix}${getRandomArrayElement(sector.routes).imageSrc}`} 
+                src={`${imagesSrcPrefix}${sectorImages?.[sector.id]}`} 
                 width={300} 
                 height={600} 
                 style={{ minWidth: 320, width: "100%", height: "auto" }}
@@ -74,9 +70,12 @@ export function SectorsPage() {
 }
 
 export const getStaticProps = (() => {
+  const sectorImages = getSectorImages();
+
   return {
     props: {
       name: "Sectores",
+      sectorImages: sectorImages,
     },
   };
 }) satisfies GetStaticProps<{
