@@ -1,4 +1,4 @@
-import { ClimbingGrade, ClimbingGradeRange, RoutesSearchParams } from "@/types/los-remes-sectors";
+import { ClimbingGrade, ClimbingGradeRange, LosRemesRoute, LosRemesSector, RoutesSearchParams } from "@/types/los-remes-sectors";
 import { ParsedUrlQuery } from "querystring";
 import sectors from "./los-remes.json";
 
@@ -108,3 +108,13 @@ export const parseRoutesSearchParams = (searchParamsQuery: ParsedUrlQuery): Rout
     } : undefined,
   };
 };
+
+export type FindSectorRoutesArg = {
+  sector: LosRemesSector;
+  gradeRange?: ClimbingGradeRange;
+}
+
+export function findSectorRoutes({ sector, gradeRange }: FindSectorRoutesArg): LosRemesRoute[] {
+  const filteredRoutes = gradeRange ? sector.routes.filter(route => isGradeWithinRange(route.grade, gradeRange)) : sector.routes;
+  return filteredRoutes;
+}

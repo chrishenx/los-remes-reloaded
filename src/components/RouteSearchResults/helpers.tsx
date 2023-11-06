@@ -1,5 +1,4 @@
-import { isGradeWithinRange } from "@/lib/climbing-utils";
-import { ClimbingGradeRange, LosRemesSector } from "@/types/los-remes-sectors";
+import { LosRemesSector } from "@/types/los-remes-sectors";
 import { RollbackOutlined } from '@ant-design/icons';
 import { Avatar, Button, Card, Flex, Typography } from "antd";
 import Image from "next/image";
@@ -7,16 +6,9 @@ import Link from "next/link";
 
 const imagesSrcPrefix = "https://www.losremes.com/";
 
-export type SectorRoutesFinderProps = {
-  sector: LosRemesSector;
-  gradeRange?: ClimbingGradeRange;
-}
-
-export function findSectorRoutes({ sector, gradeRange }: SectorRoutesFinderProps) {
-  const filteredRoutes = gradeRange ? sector.routes.filter(route => isGradeWithinRange(route.grade, gradeRange)) : sector.routes;
-
+export function getSectorRoutesCards(sector: LosRemesSector) {
   return (
-    filteredRoutes.map((route, idx) => (
+    sector.routes.map((route, idx) => (
       <Card
         key={route.id}
         bodyStyle={{ padding: 0 }}
