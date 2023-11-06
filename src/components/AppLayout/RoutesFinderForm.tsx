@@ -90,16 +90,18 @@ export function RoutesFinderForm({ onSearchClicked }: RoutesFinderProps) {
               <>Grado entre <strong>5.{mappedGradeRange[0]}</strong> y <strong>5.{mappedGradeRange[1]}</strong></>
           }
         </Typography.Text>
-        <Slider
-          min={0}
-          max={gradesCatalog.length - 1}
-          range
-          defaultValue={[0, gradesCatalog.length - 1]}
-          value={selectedGradeRange}
-          onChange={(value: number[]) => setSelectedGradeRange(value as [number, number])}
-          tooltip={{ formatter: gradeIndexToGrade }}
-          style={{ overflow: "visible" }}
-        />
+        <div style={{ paddingLeft: 20 }}>
+          <Slider
+            min={0}
+            max={gradesCatalog.length - 1}
+            range
+            defaultValue={[0, gradesCatalog.length - 1]}
+            value={selectedGradeRange}
+            onChange={(value: number[]) => setSelectedGradeRange(value as [number, number])}
+            tooltip={{ formatter: gradeIndexToGrade }}
+            style={{ overflow: "visible" }}
+          />
+        </div>
       </div>
       <div style={{ textAlign: "center" }}>
         <Button type="primary" onClick={handleRouteSearch}>Buscar</Button>
