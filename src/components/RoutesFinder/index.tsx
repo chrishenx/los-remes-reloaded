@@ -1,6 +1,6 @@
 import { ClimbingGradeRange, LosRemesSector } from "@/types/los-remes-sectors";
 import { Carousel } from "antd";
-import { findSectorRoutes } from "./SectorRoutesFinder";
+import { findSectorRoutes } from "./helpers";
 
 export type RoutesFinderProps = {
   sectors: LosRemesSector[];
