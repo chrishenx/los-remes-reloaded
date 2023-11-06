@@ -1,12 +1,13 @@
-import { Button, Divider, Drawer, Flex, Image, Typography, theme } from "antd";
+import { Button, Divider, Drawer, Flex, Typography, theme } from "antd";
 import Link from "next/link";
 import {
   MenuFoldOutlined,
 } from '@ant-design/icons';
 import { BsFillMoonStarsFill, BsFillSunFill } from 'react-icons/bs';
 import { useContext } from "react";
-import { RoutesFinder } from "./RoutesFinder";
+import { RoutesFinderForm } from "./RoutesFinderForm";
 import { ThemeModeContext } from "../ThemeModeContext";
+import Image from "next/image";
 
 export type AppDrawerProps = {
   collapsed: boolean;
@@ -24,7 +25,7 @@ export function AppDrawer({collapsed, onCollapse}: AppDrawerProps) {
     <Drawer
       title={
         <Flex justify="space-between" align="center" gap="small" style={{ paddingRight: 8 }}>
-          <Link href="/">
+          <Link href="/" onClick={onCollapse}>
             <Image src="/logos-dall-e-2.png" alt="LosRemes Reloaded" height={70} width={70} />
           </Link>
           <Typography.Title level={4} style={{margin: 0}}>
@@ -45,7 +46,7 @@ export function AppDrawer({collapsed, onCollapse}: AppDrawerProps) {
       styles={{ header: { padding: 0 }, body: { padding: 8 } }}
       style={{ background: colorPrimaryBg, padding: 0 }}
     >
-      <RoutesFinder />
+      <RoutesFinderForm onSearchClicked={onCollapse} />
       <Divider />
       <Flex vertical align="center" style={{ background: colorBgElevated, padding: 8 }}>
         <Button
