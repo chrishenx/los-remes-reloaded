@@ -23,7 +23,7 @@ export function findSectorRoutes({ sector, gradeRange }: SectorRoutesFinderProps
         bordered={false}
       >
         <Card.Meta 
-          avatar={<Avatar style={{marginTop: 8}} size="large">{sector.name.at(0)}.{idx + 1}</Avatar>}
+          avatar={<Avatar style={{marginTop: 8}} size="large">{sector.name.charAt(0)}.{idx + 1}</Avatar>}
           title={
             <Flex justify="space-between">
               <Typography.Text>{route.name}</Typography.Text>
