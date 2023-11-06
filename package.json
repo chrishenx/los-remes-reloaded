@@ -20,9 +20,6 @@
     "react-icons": "^4.11.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.23.2",
-    "@babel/preset-env": "^7.23.2",
-    "@babel/preset-typescript": "^7.23.2",
     "@types/jest": "^29.5.7",
     "@types/node": "^20",
     "@types/node-fetch": "^2.6.7",
@@ -31,7 +28,6 @@
     "@typescript-eslint/eslint-plugin": "^6.9.1",
     "@typescript-eslint/parser": "^6.9.1",
     "autoprefixer": "^10",
-    "babel-jest": "^29.7.0",
     "esbuild-runner": "^2.2.2",
     "eslint": "^8",
     "eslint-config-next": "13.5.6",
