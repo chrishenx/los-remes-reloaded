@@ -60,6 +60,7 @@ export function SectorsPage({ sectorImages }: InferGetServerSidePropsType<typeof
                 width={300} 
                 height={600} 
                 style={{ minWidth: 320, width: "100%", height: "auto" }}
+                priority
               />
             </Card>
           ))
