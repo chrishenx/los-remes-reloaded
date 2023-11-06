@@ -25,3 +25,8 @@ export type LosRemesSector = {
   gradeRange: ClimbingGradeRange,
   routes: LosRemesRoute[];
 };
+
+export type RoutesSearchParams = {
+  sectors: LosRemesSector[];
+  gradeRange?: ClimbingGradeRange;
+};

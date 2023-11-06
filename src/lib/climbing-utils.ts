@@ -1,4 +1,8 @@
-import { ClimbingGrade, ClimbingGradeRange } from "@/types/los-remes-sectors";
+import { ClimbingGrade, ClimbingGradeRange, RoutesSearchParams } from "@/types/los-remes-sectors";
+import { ParsedUrlQuery } from "querystring";
+import sectors from "./los-remes.json";
+
+// TODO 3: Make this a class for the Grades and GradeRanges to be able to compare them
 
 export const UNKNOWN_GRADE: ClimbingGrade = {
   raw: '5.??',
@@ -79,3 +83,28 @@ export function isGradeWithinRange(grade: ClimbingGrade, gradeRange: ClimbingGra
 
   return isNumberWithinRange && areSomeGradeLettersWithinRange;
 }
+
+export const parseRoutesSearchParams = (searchParamsQuery: ParsedUrlQuery): RoutesSearchParams => {
+  // TODO Validate types or query params
+  const sectorIds = new Set(searchParamsQuery.sector_ids as string[] ?? []);
+  const filteredSectors = sectors
+    .filter((sector) => sectorIds.has(sector.id));
+
+  const rawMinGrade = searchParamsQuery.min_grade;
+  const rawMaxGrade = searchParamsQuery.max_grade;
+
+  const minGrade = parseGrade(rawMinGrade as string ?? "");
+  const maxGrade = parseGrade(rawMaxGrade as string ?? "");
+
+  // TODO 1: Make sure minGrade is lower than maxGrade
+  // TODO 2: Make sure minGrade and maxGrade are valid grades using [minGrade|maxGrade].number is not 0 (unknown grade)
+
+  return {
+    sectors: filteredSectors,
+    gradeRange: rawMinGrade && rawMaxGrade ? {
+      raw: `${rawMinGrade} a ${rawMaxGrade}`,
+      min: minGrade,
+      max: maxGrade
+    } : undefined,
+  };
+};
