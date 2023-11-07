@@ -71,6 +71,7 @@ export const getStaticProps = ((context) => {
   return {
     props: {
       name: `Sector ${sector?.name}`,
+      subtitle: `${sector?.routes.length} rutas de ${sector?.gradeRange.raw}`,
       sector,
     },
   };

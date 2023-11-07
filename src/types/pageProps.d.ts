@@ -1,4 +1,5 @@
 
 export type PageProps = {
-  name: string;
+  name: string; // TODO refactor to title
+  subtitle?: string; 
 };

@@ -1,4 +1,4 @@
-import { Button, Layout, Typography, theme } from 'antd';
+import { Button, Flex, Layout, Typography, theme } from 'antd';
 import { AppProps } from 'next/app';
 import { useState } from 'react';
 import {
@@ -22,7 +22,7 @@ export function AppLayout({ Component, pageProps }: AppLayoutProps) {
     <Layout style={{ height: "100vh" }}>
       <AppDrawer collapsed={collapsed} onCollapse={() => setCollapsed(true)} />
       <Layout>
-        <Header style={{ background: colorPrimaryBg, padding: 0 }}>
+        <Header style={{ display: "flex", alignItems: "center", background: colorPrimaryBg, padding: 0 }}>
           <Button
             type="text"
             icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
@@ -32,9 +32,18 @@ export function AppLayout({ Component, pageProps }: AppLayoutProps) {
               width: '58px',
             }}
           />
-          <Typography.Title level={3} style={{ display: "inline", color: colorText, margin: 0, marginLeft: 4 }}>
-            {pageProps.name}
-          </Typography.Title>
+          <Flex style={{ color: colorText, marginLeft: 4, display: "inline-flex" }} vertical>
+            <Typography.Title level={3} style={{ margin: 0, marginTop: 0 }} >
+              {pageProps.name}
+            </Typography.Title>
+            {
+              pageProps.subtitle && (
+                <Typography.Title level={5} style={{ margin: 0 }} >
+                  {pageProps.subtitle}
+                </Typography.Title>
+              )
+            }
+          </Flex>
         </Header> 
         <Content style={{ background: colorBgContainer }}>
           <Component {...pageProps} />

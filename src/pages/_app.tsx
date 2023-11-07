@@ -13,12 +13,11 @@ export function App(props: AppProps<PageProps>) {
   // TODO add to Context
   const [themeMode, setThemeMode] = useState<MenuTheme>(defaultThemeMode);
   const toggleThemeMode = () => setThemeMode(themeMode === 'light' ? 'dark' : 'light');
-  const title = `LosRemesReloaded: ${props.pageProps.name}`;
   return (
     <ConfigProvider theme={{...theme, algorithm: themeMode === 'light' ? antdTheme.defaultAlgorithm : antdTheme.darkAlgorithm}}>
       <Head>
         <title>
-          {title}
+          {props.pageProps.name}
         </title>
       </Head>
       <ThemeModeProvider themeMode={themeMode} toggleThemeMode={toggleThemeMode}>
