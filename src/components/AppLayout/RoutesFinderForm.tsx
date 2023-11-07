@@ -19,7 +19,7 @@ function gradeIndexToGrade(gradeIndex: number | undefined) {
 }
 
 export type RoutesFinderProps = {
-  onSearchClicked: () => void;
+  onSearchClicked?: () => void;
 };
 
 export function RoutesFinderForm({ onSearchClicked }: RoutesFinderProps) {
@@ -64,12 +64,12 @@ export function RoutesFinderForm({ onSearchClicked }: RoutesFinderProps) {
         max_grade: mappedGradeRange[1]
       }
     });
-    onSearchClicked();
+    onSearchClicked?.();
   };
 
   return (
     <Flex vertical style={{ padding: 8, background: colorBgElevated }} gap={12}>
-      <Typography.Text type="secondary">Buscar rutas</Typography.Text>
+      <Typography.Text type="secondary">Buscar rutas en</Typography.Text>
       <Select
         mode="multiple"
         allowClear

@@ -14,7 +14,7 @@ const AppDocument = () => (
       <meta name="msapplication-TileColor" content="#da532c" />
       <meta name="theme-color" content="#ffffff" />
     </Head>
-    <body style={{ margin: 0 }}>
+    <body style={{ margin: 0, width: "100vw" }}>
       <Main />
       <NextScript />
     </body>

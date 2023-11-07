@@ -40,14 +40,17 @@ export function getSectorRoutesCards(sector: LosRemesSector) {
           }
           style={{ padding: 8, minWidth: 320 }}
         />
-        <Image
-          alt={route.name} 
-          src={`${imagesSrcPrefix}${route.imageSrc}`}
-          width={300}
-          height={600}
-          style={{ minWidth: 320, width: "100%", height: "auto" }}
-          priority
-        />
+        {
+          route.imageSrc !== undefined ? (
+            <Image
+              alt={route.name} 
+              src={`${imagesSrcPrefix}${route.imageSrc}`}
+              width={300}
+              height={600}
+              style={{ minWidth: 320, width: "100%", height: "auto" }}
+            />
+          ) : null
+        }
       </Card>
     ))
   );

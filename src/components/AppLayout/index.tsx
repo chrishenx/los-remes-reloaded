@@ -13,25 +13,27 @@ const { Header, Content } = Layout;
 type AppLayoutProps = AppProps<PageProps>;
 
 export function AppLayout({ Component, pageProps }: AppLayoutProps) {
-  const [collapsed, setCollapsed] = useState(true);
+  const [collapsed, setCollapsed] = useState(pageProps.drawerDisabled ?? false);
   const {
     token: { colorBgContainer, colorPrimaryBg, colorText },
   } = theme.useToken();
 
   return (
-    <Layout style={{ height: "100vh" }}>
+    <Layout style={{ height: "100vh", width: "100vw" }}>
       <AppDrawer collapsed={collapsed} onCollapse={() => setCollapsed(true)} />
       <Layout>
         <Header style={{ display: "flex", alignItems: "center", background: colorPrimaryBg, padding: 0 }}>
-          <Button
-            type="text"
-            icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-            onClick={() => setCollapsed(!collapsed)}
-            style={{
-              fontSize: '16px',
-              width: '58px',
-            }}
-          />
+          {!pageProps.drawerDisabled && (
+             <Button
+              type="text"
+              icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+              onClick={() => setCollapsed(!collapsed)}
+              style={{
+                fontSize: '16px',
+                width: '58px',
+              }}
+            />
+          )}
           <Flex style={{ color: colorText, marginLeft: 4, display: "inline-flex" }} vertical>
             <Typography.Title level={3} style={{ margin: 0, marginTop: 0 }} >
               {pageProps.name}

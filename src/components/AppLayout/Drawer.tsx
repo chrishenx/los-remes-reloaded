@@ -26,7 +26,7 @@ export function AppDrawer({collapsed, onCollapse}: AppDrawerProps) {
       title={
         <Flex justify="space-between" align="center" gap="small" style={{ paddingRight: 8 }}>
           <Link href="/" onClick={onCollapse}>
-            <Image src="/logos-dall-e-2-favicon.png" alt="LosRemes Reloaded" height={70} width={70} />
+            <Image src="/final-logo.png" alt="LosRemes Reloaded" height={70} width={70} />
           </Link>
           <Typography.Title level={4} style={{margin: 0}}>
             Los Remes Reloaded
@@ -40,7 +40,6 @@ export function AppDrawer({collapsed, onCollapse}: AppDrawerProps) {
       }
       closeIcon={null}
       onClose={onCollapse}
-      width={320}
       open={!collapsed}
       placement="left"
       styles={{ header: { padding: 0 }, body: { padding: 8 } }}

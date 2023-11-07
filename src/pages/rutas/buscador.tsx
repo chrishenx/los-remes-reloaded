@@ -19,14 +19,16 @@ export const getServerSideProps = (async (context) => {
     {...sector, routes: findSectorRoutes({ sector, gradeRange }) }
   ));
 
-  const routesCount = filteredSectors.reduce((acc, sector) => acc + sector.routes.length, 0);
+  const sectorsToUse = filteredSectors.length === 0 ? sectors : filteredSectors;
+
+  const routesCount = sectorsToUse.reduce((acc, sector) => acc + sector.routes.length, 0);
   
   const pageName = gradeRange?.min.raw === gradeRange?.max.raw ? `${routesCount} rutas de ${gradeRange?.min.raw}` : `${routesCount} rutas entre ${gradeRange?.min.raw} y ${gradeRange?.max.raw}`;
   
   return {
     props: {
       name: pageName,
-      sectorsRoutes: filteredSectors.length === 0 ? sectors : filteredSectors,
+      sectorsRoutes: sectorsToUse,
     },
   };
 }) satisfies GetServerSideProps<PageProps & RoutesFinderProps>;
