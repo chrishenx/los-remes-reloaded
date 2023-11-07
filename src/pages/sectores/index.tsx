@@ -8,7 +8,7 @@ import { PageProps } from '@/types/pageProps';
 import { useEffect, useRef } from 'react';
 import { CarouselRef } from 'antd/es/carousel';
 import { useRouter } from 'next/router';
-import { getSectorImages } from './helpers';
+import { getSectorImages } from '@/lib/climbing-utils';
 
 const imagesSrcPrefix = "https://www.losremes.com/";
 

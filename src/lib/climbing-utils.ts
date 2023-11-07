@@ -118,3 +118,15 @@ export function findSectorRoutes({ sector, gradeRange }: FindSectorRoutesArg): L
   const filteredRoutes = gradeRange ? sector.routes.filter(route => isGradeWithinRange(route.grade, gradeRange)) : sector.routes;
   return filteredRoutes;
 }
+
+export function getRandomArrayElement<T>(array: T[]): T {
+  return array[Math.floor(Math.random() * array.length)];
+}
+
+export function getSectorImages() {
+  const sectorImages = sectors.reduce((sectorIdToString, sector) => (
+    {...sectorIdToString, [sector.id]: getRandomArrayElement(sector.routes).imageSrc  ?? ""}
+  ), {} as Record<string, string>);
+
+  return sectorImages;
+}
