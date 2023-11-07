@@ -130,3 +130,7 @@ export function getSectorImages() {
 
   return sectorImages;
 }
+
+export function getAllSectors() {
+  return sectors;
+}

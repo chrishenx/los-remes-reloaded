@@ -3,10 +3,10 @@ import { Carousel } from "antd";
 import { getSectorRoutesCards } from "./helpers";
 
 export type RoutesFinderProps = {
-  sectorsRoutes: LosRemesSector[];
+  sectors: LosRemesSector[];
 };
 
-export function RouteSearchResults({ sectorsRoutes }: RoutesFinderProps) {
+export function RouteSearchResults({ sectors: sectorsRoutes }: RoutesFinderProps) {
   // TODO Possibly sort by grade ascendingly if the gradeRange property is set
   return (
     <>
