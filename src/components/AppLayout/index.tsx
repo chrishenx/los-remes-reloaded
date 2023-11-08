@@ -3,7 +3,7 @@ import { AppProps } from 'next/app';
 import { useState } from 'react';
 import {
   MenuFoldOutlined,
-  MenuUnfoldOutlined,
+  SearchOutlined,
 } from '@ant-design/icons';
 import { PageProps } from '@/types/pageProps';
 import { AppDrawer } from './Drawer';
@@ -26,12 +26,13 @@ export function AppLayout({ Component, pageProps }: AppLayoutProps) {
           {!pageProps.drawerDisabled && (
              <Button
               type="text"
-              icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+              icon={collapsed ? <SearchOutlined /> : <MenuFoldOutlined />}
               onClick={() => setCollapsed(!collapsed)}
               style={{
                 fontSize: '16px',
                 width: '58px',
               }}
+              size="large"
             />
           )}
           <Flex style={{ color: colorText, marginLeft: 4, display: "inline-flex" }} vertical>
