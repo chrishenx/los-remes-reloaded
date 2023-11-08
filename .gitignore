@@ -8,6 +8,11 @@
 # testing
 /coverage
 
+# firebase.js
+/.firebase/
+
+# next.js
+/.next/
 # next.js
 /.next/
 /out/
