@@ -24,7 +24,7 @@ export function AppDrawer({collapsed, onCollapse}: AppDrawerProps) {
   return (
     <Drawer
       title={
-        <Flex justify="space-between" align="center" gap="small" style={{ paddingRight: 8 }}>
+        <Flex justify="space-between" align="center" gap="small" style={{ padding: 8 }}>
           <Link href="/" onClick={onCollapse}>
             <Image src="/final-logo.png" alt="LosRemes Reloaded" height={70} width={70} />
           </Link>
