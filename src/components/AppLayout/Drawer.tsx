@@ -44,6 +44,7 @@ export function AppDrawer({collapsed, onCollapse}: AppDrawerProps) {
       placement="left"
       styles={{ header: { padding: 0 }, body: { padding: 8 } }}
       style={{ background: colorPrimaryBg, padding: 0 }}
+      width={320}
     >
       <RoutesFinderForm onSearchClicked={onCollapse} />
       <Divider />
