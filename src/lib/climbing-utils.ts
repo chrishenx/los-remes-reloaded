@@ -86,7 +86,8 @@ export function isGradeWithinRange(grade: ClimbingGrade, gradeRange: ClimbingGra
 
 export const parseRoutesSearchParams = (searchParamsQuery: ParsedUrlQuery): RoutesSearchParams => {
   // TODO Validate types or query params
-  const sectorIds = new Set(searchParamsQuery.sector_ids as string[] ?? []);
+  const sectorIdsArray = typeof searchParamsQuery.sector_ids === "string" ? [searchParamsQuery.sector_ids] : searchParamsQuery.sector_ids as string[];
+  const sectorIds = new Set(sectorIdsArray ?? []);
   const filteredSectors = sectors
     .filter((sector) => sectorIds.has(sector.id));
 
