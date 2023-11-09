@@ -5,6 +5,7 @@ import { RoutesFinderForm } from "@/components/AppLayout/RoutesFinderForm";
 import Link from "next/link";
 import Image from "next/image";
 import { GiBleedingEye } from "react-icons/gi";
+import losRemesLogo from "../../public/final-logo-reduced.png";
 
 export default function Home(_props: InferGetStaticPropsType<typeof getStaticProps>) {
   const {
@@ -19,10 +20,8 @@ export default function Home(_props: InferGetStaticPropsType<typeof getStaticPro
     >
       <Typography.Paragraph style={{ display: "flex", alignItems: "center" }}>
         <Image 
-          src="/final-logo.png" 
-          width={150} 
-          height={150}
-          style={{ margin: "0px 8px 0px 0px" }}
+          src={losRemesLogo}
+          style={{ margin: "0px 8px 0px 0px", width: 150, height: 150 }}
           alt="LosRemesReloaded Logo - A R letter depicting a climbing crag, being climbed by a climber elf"
         />
         Los Remes Reloaded es tu guía de escalada en Los Remes, un área de escalada en roca ubicada en El Cerro del Mazapán, Naucalpan, Estado de México.

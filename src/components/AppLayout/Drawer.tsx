@@ -8,6 +8,7 @@ import { useContext } from "react";
 import { RoutesFinderForm } from "./RoutesFinderForm";
 import { ThemeModeContext } from "../ThemeModeContext";
 import Image from "next/image";
+import losRemesLogo from "../../../public/final-logo-reduced.png";
 
 export type AppDrawerProps = {
   collapsed: boolean;
@@ -26,7 +27,7 @@ export function AppDrawer({collapsed, onCollapse}: AppDrawerProps) {
       title={
         <Flex justify="space-between" align="center" gap="small" style={{ padding: 8 }}>
           <Link href="/" onClick={onCollapse}>
-            <Image src="/final-logo.png" alt="LosRemes Reloaded" height={70} width={70} />
+            <Image src={losRemesLogo} alt="LosRemes Reloaded" style={{ height: 70, width: 70 }} />
           </Link>
           <Typography.Title level={4} style={{margin: 0}}>
             Los Remes Reloaded
