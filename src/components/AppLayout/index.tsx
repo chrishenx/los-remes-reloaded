@@ -22,6 +22,9 @@ export function AppLayout({ Component, pageProps }: AppLayoutProps) {
     <Layout style={{ height: "100vh", width: "100vw" }}>
       <AppDrawer collapsed={collapsed} onCollapse={() => setCollapsed(true)} />
       <Layout>
+        {/* 
+          TODO Change header font to be more stylish
+        */}
         <Header style={{ display: "flex", alignItems: "center", background: colorPrimaryBg, padding: 0 }}>
           {!pageProps.drawerDisabled && (
              <Button
@@ -35,7 +38,7 @@ export function AppLayout({ Component, pageProps }: AppLayoutProps) {
               size="large"
             />
           )}
-          <Flex style={{ color: colorText, marginLeft: 4, display: "inline-flex" }} vertical>
+          <Flex style={{ color: colorText, marginLeft: 8, display: "inline-flex" }} vertical>
             <Typography.Title level={3} style={{ margin: 0, marginTop: 0 }} >
               {pageProps.name}
             </Typography.Title>
