@@ -1,41 +1,49 @@
 import { PageProps } from "@/types/pageProps";
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
-import { Button, Card, Flex, Typography } from "antd";
+import { Button, Card, Flex, Typography, theme } from "antd";
 import { RoutesFinderForm } from "@/components/AppLayout/RoutesFinderForm";
 import Link from "next/link";
 import Image from "next/image";
+import { GiBleedingEye } from "react-icons/gi";
 
 export default function Home(_props: InferGetStaticPropsType<typeof getStaticProps>) {
+  const {
+    token: { colorPrimary, colorPrimaryText },
+  } = theme.useToken();
+
   return (
     <Flex 
-      vertical style={{
-          padding: 10
-      }}
+      vertical 
+      style={{ padding: 10 }}
+      gap={8}
     >
-      <Image 
-        src="/final-logo.png" 
-        width={180} 
-        height={180}
-        style={{ margin: "0 auto" }}
-        alt="LosRemesReloaded Logo - A R letter depicting a climbing crag, being climbed by a climber elf"
-      />
+      <Typography.Paragraph style={{ display: "flex", alignItems: "center" }}>
+        <Image 
+          src="/final-logo.png" 
+          width={150} 
+          height={150}
+          style={{ margin: "0px 8px 0px 0px" }}
+          alt="LosRemesReloaded Logo - A R letter depicting a climbing crag, being climbed by a climber elf"
+        />
+        Los Remes Reloaded es tu guía de escalada en Los Remes, un área de escalada en roca ubicada en El Cerro del Mazapán, Naucalpan, Estado de México.
+      </Typography.Paragraph>
+      <Typography.Paragraph>
+        Comienza buscando una ruta, seleccionando tus sectores de interés y un rango de grados de dificultad.
+        O navega los sectores para conocerlos uno por uno.
+      </Typography.Paragraph>
       <Card title="Encuentra tus rutas" headStyle={{ padding: 10 }} bodyStyle={{ padding: 4 }}>
         <RoutesFinderForm />
       </Card>
-      <Flex justify="space-around" style={{ marginTop: 16 }}>
-        <Typography.Title level={3} style={{ marginTop: 0 }}>
-          O
-        </Typography.Title>
-        <Link href="/sectores" >
-          <Button 
-            size="large" 
-            type="default"
-            style={{ borderWidth: 2 }}
-          >
-            Visita los sectores en Los Remes
-          </Button>
-        </Link>
-      </Flex>
+      <Link href="/sectores" style={{ textAlign: "center", marginTop: 16 }} >
+        <Button 
+          size="large" 
+          type="default"
+          style={{ borderWidth: 2, borderColor: colorPrimary, display: "inline-flex", alignItems: "center", justifyContent: "space-between" }}
+        >
+          <span style={{ color: colorPrimaryText }}>Navegar todos los sectores</span>
+          <GiBleedingEye style={{ marginTop: 4, marginLeft: 16 }} />
+        </Button>
+      </Link>
     </Flex>
   );
 }
