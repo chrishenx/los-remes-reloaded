@@ -1,6 +1,6 @@
 import { PageProps } from "@/types/pageProps";
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
-import { Button, Card, Flex, Typography, theme } from "antd";
+import { Button, Card, Divider, Flex, Typography, theme } from "antd";
 import { RoutesFinderForm } from "@/components/AppLayout/RoutesFinderForm";
 import Link from "next/link";
 import Image from "next/image";
@@ -29,6 +29,9 @@ export default function Home(_props: InferGetStaticPropsType<typeof getStaticPro
       <Typography.Paragraph>
         Comienza buscando una ruta, seleccionando tus sectores de interés y un rango de grados de dificultad.
         O navega los sectores para conocerlos uno por uno.
+        <Link href="/about" style={{ marginLeft: 4, color: colorPrimaryText }}>
+          Recomendaciones.
+        </Link>
       </Typography.Paragraph>
       <Card title="Encuentra tus rutas" headStyle={{ padding: 10 }} bodyStyle={{ padding: 4 }}>
         <RoutesFinderForm />
@@ -43,6 +46,24 @@ export default function Home(_props: InferGetStaticPropsType<typeof getStaticPro
           <GiBleedingEye style={{ marginTop: 4, marginLeft: 16 }} />
         </Button>
       </Link>
+      <Divider orientationMargin={30} />
+      <Typography.Text style={{textAlign: "right"}}>
+        Hecho con amor por
+        <a
+          style={{ marginLeft: 4, color: colorPrimaryText}}
+          href="https://duendevelopments.mydurable.com/" 
+          target="_blank" 
+          rel="noreferrer">
+            Duende Developments
+        </a>
+      </Typography.Text>
+      <div style={{textAlign: "right"}}>
+        <Button type="default">
+          <Link href="/about">
+            Más información
+          </Link>
+        </Button>
+      </div>
     </Flex>
   );
 }
