@@ -21,6 +21,7 @@ export function App(props: AppProps<PageProps>) {
           {props.pageProps.name}
         </title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="google-adsense-account" content="ca-pub-4113627187728759" />
       </Head>
       <ThemeModeProvider themeMode={themeMode} toggleThemeMode={toggleThemeMode}>
         <AppLayout {...props} />
