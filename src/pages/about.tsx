@@ -22,34 +22,33 @@ export function AboutPage() {
         Esto permitiría a cualquiera que vaya a la zona, poder elegir una ruta que se adapte a su nivel de experiencia.
       </Typography.Paragraph>
       <Typography.Paragraph>
-        Como recomendación, es importante entender los grados que buscas escalar, ya que eso impacta mucho tu experiencia
-        en un día de escalada normal, así como tu progreso a lo largo del tiempo en este deporte.
-        En un día de escalada, te recomiendo escalar una ruta de un grado por debajo de tu máximo, de la que tengas el 100%
-        de control. Eso te dará una sensación de confianza y seguridad, pues habrás encadenado la ruta sin problemas y eso te 
-        valida como escalador. Después de eso, puedes intentar una ruta intermedia entre tu máximo y el grado que acabas de
-        encadenar. Si la encadenas, será increible, pero si no, no pasa nada, será un buen reto que podrás encadenar en tu siguiente 
-        sesión con mucha probabilidad, obteniendo más gratificación y confianza.
-        Ya bien caliente, pruebas una ruta de tu máximo, y si llegas hasta arriba, sacando todos los movimientos, descansos, etc.
-        ya es un gran avance, pues te dará una idea de lo que necesitas mejorar para poder encadenarla. Y sé que lo lograrás.
+        Como recomendación, es crucial comprender los grados que deseas escalar, ya que esto influye significativamente en tu
+        experiencia durante un día normal de escalada, así como en tu progreso a lo largo del tiempo en este deporte. En un día
+        de escalada, te sugiero escalar una ruta un grado por debajo de tu máximo, en la que tengas el 100% de control. Esto te
+        brindará una sensación de confianza y seguridad, al haber completado la ruta sin problemas, reforzando tu autoconfianza
+        como escalador. Después, intenta una ruta intermedia entre tu máximo y el grado que acabas de completar. Si la completas,
+        será increíble; pero si no, no hay problema, será un buen desafío que probablemente podrás superar en tu próxima sesión,
+        obteniendo así más gratificación y confianza. Ya bien preparado/a, prueba una ruta de tu nivel máximo y, si llegas hasta arriba,
+        superando todos los movimientos y descansos, representará un gran avance, dándote una idea clara de lo que necesitas mejorar para
+        completarla. Y estoy seguro/a de que lo lograrás.
       </Typography.Paragraph>
       <Typography.Paragraph>
-        Este es un buen modelo para estructurar tu sesión de escalada de los fines de semana, que logra mantenerte motivado(a) al
-        construir autoconfianza con cada sesión, pues siempre logras algo nuevo, y te mantiene con hambre de más, pues siempre te 
-        queda algo por encadenar, algo duro y en algún momento encadenarás esa cosa en tu máximo.
-
-        Existen claro otros modelos, el chiste es que te diviertas, la pases bien y te mantengas motivado(a) para seguir escalando.
+        Este método es un excelente modelo para estructurar tus sesiones de escalada de fin de semana, manteniéndote motivado/a al 
+        construir autoconfianza con cada sesión. Siempre logras algo nuevo y te mantiene con ganas de más, ya que siempre habrá algo
+        por completar, algo desafiante que, eventualmente, lograrás en tu nivel máximo. Claro, existen otros modelos, pero lo importante
+        es que te diviertas, lo pases bien y te mantengas motivado/a para seguir escalando.
       </Typography.Paragraph>
       <Typography.Paragraph>
-        Parte fundamental de esto es encontrar rutas dentro de estos grados, y eso es lo que este proyecto busca resolver 
-        (Por lo menos en Los Remedios). Y tu puedes ayudarme a construir otros catalogos públicos de otras áreas de escalada, pienso que mi
-        siguiente proyecto será el de Los Dinamos, pues es un lugar que me encanta y  que me siento motivado a desarrollar.
+        Una parte fundamental de esto es encontrar rutas dentro de estos grados, y eso es precisamente lo que este proyecto busca resolver, 
+        al menos en Los Remedios. Y tú puedes ayudarme a construir otros catálogos públicos de diferentes áreas de escalada. Pienso que mi 
+        siguiente proyecto será en Los Dinamos, un lugar que me encanta y por el cual me siento muy motivado/a a desarrollar.
       </Typography.Paragraph>
       <Typography.Paragraph>
-        De hecho, al entrar a esta página, ya me estas ayudando. Checa si algo del contenido de publicidad te hace match y le das click.
-        Solo te pido que si te gusta la página, la compartas con tus amigos.
+        De hecho, al entrar a esta página, ya me estás ayudando. Checa si algo del contenido de publicidad te interesa y haz clic. Solo te pido
+        que, si te gusta la página, la compartas con tus amigos.
       </Typography.Paragraph>
       <Typography.Paragraph>
-        Si quieres ayudar a construir el catálogo, mandame tus comentarios en esta caja:
+        Si quieres ayudar a construir el catálogo, mándame tus comentarios en esta caja:
       </Typography.Paragraph>
       <Input.TextArea rows={4} value={comments} onChange={onCommentsChange} />
       <Button style={{ marginTop: 8 }} type="primary">Enviar</Button>
