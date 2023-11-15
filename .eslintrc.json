@@ -26,6 +26,15 @@
         "args": "after-used",
         "argsIgnorePattern": "^_"
       }
+    ],
+    "react/jsx-max-props-per-line": [
+      "warn",
+      {
+        "maximum": {
+          "single": 1,
+          "multiple": 0
+        }
+      }
     ]
   },
   "plugins": [
