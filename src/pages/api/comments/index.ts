@@ -21,19 +21,14 @@ export function parseRawCommentsWithReCaptcha(rawCommentsWithReCaptcha: unknown)
 
 async function handleContactFormSubmitted(req: NextApiRequest, res: NextApiResponse) {
   try {
+    // TODO Remove this response when deployment of API routes is validated
+    return res.status(200).json({ message: "OK" });
     // TODO Integrate into a declarative interface, a higher order function that takes n middlewares and applies them in order
     const { commentSubmission } = parseRawCommentsWithReCaptcha(req.body);
 
-    // Measure elapsed time
-    let start = Date.now();
     await reCatpchaTokenValidationMiddleware(req, res);
-    let end = Date.now();
-    console.log("reCaptcha validation took", end - start, "ms");
 
-    start = Date.now();
     const storedComments = await storeComments(commentSubmission);
-    end = Date.now();
-    console.log("Storing comments took", end - start, "ms");
     
     return res.status(200).json(storedComments);
   } catch (error) {
