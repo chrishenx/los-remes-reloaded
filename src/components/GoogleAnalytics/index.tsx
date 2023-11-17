@@ -8,7 +8,8 @@ export function GoogleAnalytics() {
         strategy="lazyOnload"
         src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
       />
-      <Script id="google-analytics-script" strategy="lazyOnload">
+      <Script id="google-analytics-script"
+        strategy="lazyOnload">
         {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}

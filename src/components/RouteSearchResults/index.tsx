@@ -10,7 +10,8 @@ export function RouteSearchResults({ sectors: sectorsRoutes }: RoutesFinderProps
   // TODO Possibly sort by grade ascendingly if the gradeRange property is set
   return (
     <>
-      <Carousel dotPosition="bottom" style={{width: "100%", overflowX: "hidden"}}>
+      <Carousel dotPosition="bottom"
+        style={{width: "100%", overflowX: "hidden"}}>
         {
           sectorsRoutes.map(sector => getSectorRoutesCards(sector))
         }

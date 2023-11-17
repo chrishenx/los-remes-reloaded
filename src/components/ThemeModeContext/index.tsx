@@ -11,7 +11,7 @@ export type ThemeModeProviderProps = {
 } & ThemeModeProps;
 
 
-export const defaultThemeMode: MenuTheme = 'light';
+export const defaultThemeMode: MenuTheme = "light";
 
 export const ThemeModeContext = createContext<ThemeModeProps>({
   themeMode: defaultThemeMode,

@@ -1,14 +1,14 @@
-import { Avatar, Button, Card, Carousel, Flex, Typography, theme } from 'antd';
-import sectors from '@/lib/los-remes.json';
-import Image from 'next/image';
-import { ExpandAltOutlined } from '@ant-design/icons';
-import Link from 'next/link';
-import { GetStaticProps, InferGetServerSidePropsType } from 'next';
-import { PageProps } from '@/types/pageProps';
-import { useEffect, useRef } from 'react';
-import { CarouselRef } from 'antd/es/carousel';
-import { useRouter } from 'next/router';
-import { getSectorImages } from '@/lib/climbing-utils';
+import { Avatar, Button, Card, Carousel, Flex, Typography, theme } from "antd";
+import sectors from "@/lib/los-remes.json";
+import Image from "next/image";
+import { ExpandAltOutlined } from "@ant-design/icons";
+import Link from "next/link";
+import { GetStaticProps, InferGetServerSidePropsType } from "next";
+import { PageProps } from "@/types/pageProps";
+import { useEffect, useRef } from "react";
+import { CarouselRef } from "antd/es/carousel";
+import { useRouter } from "next/router";
+import { getSectorImages } from "@/lib/climbing-utils";
 
 const imagesSrcPrefix = "https://www.losremes.com/";
 
@@ -29,7 +29,8 @@ export function SectorsPage({ sectorImages }: InferGetServerSidePropsType<typeof
 
   return (
     <>
-      <Carousel dotPosition="bottom" ref={carouselRef} >
+      <Carousel dotPosition="bottom"
+        ref={carouselRef} >
         {
           sectors.map((sector, idx) => (
             <Card
@@ -38,12 +39,17 @@ export function SectorsPage({ sectorImages }: InferGetServerSidePropsType<typeof
               bordered={false}
             >
               <Card.Meta 
-                avatar={<Avatar style={{marginTop: 8}} size="large">{idx + 1}</Avatar>}
+                avatar={<Avatar style={{marginTop: 8}}
+                  size="large">{idx + 1}</Avatar>}
                 title={
                   <Flex justify="space-between">
                     <Typography.Text style={{color: colorText}}>{sector.name}</Typography.Text>
-                    <Link href={`/rutas/${sector.id}`} key={`${sector.id}_routes`}>
-                      <Button key={`${sector.id}_enter`} color={colorText} type="primary" icon={<ExpandAltOutlined />}>
+                    <Link href={`/rutas/${sector.id}`}
+                      key={`${sector.id}_routes`}>
+                      <Button key={`${sector.id}_enter`}
+                        color={colorText}
+                        type="primary"
+                        icon={<ExpandAltOutlined />}>
                         Entrar
                       </Button>
                     </Link>

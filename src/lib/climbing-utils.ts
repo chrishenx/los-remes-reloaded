@@ -5,9 +5,9 @@ import sectors from "./los-remes.json";
 // TODO 3: Make this a class for the Grades and GradeRanges to be able to compare them
 
 export const UNKNOWN_GRADE: ClimbingGrade = {
-  raw: '5.??',
+  raw: "5.??",
   number: 0,
-  letter: '??',
+  letter: "??",
 };
 
 const LETTER_TO_DECIMAL_MAP = new Map<string, number>([
@@ -24,9 +24,9 @@ export function parseGrade(rawGrade: string): ClimbingGrade {
     return UNKNOWN_GRADE;
   } */
 
-  const withoutNoise = rawGrade.replace(/5\./g, '');
+  const withoutNoise = rawGrade.replace(/5\./g, "");
   const number = Number.parseInt(withoutNoise) ?? 0;
-  const letter = withoutNoise.replace(/\d+/, '');
+  const letter = withoutNoise.replace(/\d+/, "");
 
   return {
     raw: rawGrade,
@@ -36,7 +36,7 @@ export function parseGrade(rawGrade: string): ClimbingGrade {
 }
 
 export function parseGradeRange(rawGradeRange: string): ClimbingGradeRange {
-  const [rawMin, rawMax] = rawGradeRange.split(' a ');
+  const [rawMin, rawMax] = rawGradeRange.split(" a ");
   const min = parseGrade(rawMin);
   const max = parseGrade(rawMax);
   return { min, max, raw: rawGradeRange };

@@ -1,5 +1,5 @@
 import { LosRemesSector } from "@/types/los-remes-sectors";
-import { RollbackOutlined } from '@ant-design/icons';
+import { RollbackOutlined } from "@ant-design/icons";
 import { Avatar, Button, Card, Flex, Typography } from "antd";
 import Image from "next/image";
 import Link from "next/link";
@@ -15,16 +15,18 @@ export function getSectorRoutesCards(sector: LosRemesSector) {
         bordered={false}
       >
         <Card.Meta 
-          avatar={<Avatar style={{marginTop: 8}} size="large">{sector.name.charAt(0)}.{idx + 1}</Avatar>}
+          avatar={<Avatar style={{marginTop: 8}}
+            size="large">{sector.name.charAt(0)}.{idx + 1}</Avatar>}
           title={
             <Flex justify="space-between">
               <Typography.Text>{route.name}</Typography.Text>
-              <Link href={`/sectores?focus_sector_id=${sector.id}`} key={`${sector.id}_routes`}>
+              <Link href={`/sectores?focus_sector_id=${sector.id}`}
+                key={`${sector.id}_routes`}>
                 <Button
                   key={`${route.id}_gobackto_${sector.id}`} 
                   type="default" 
                   icon={<RollbackOutlined />}
-                  style={{fontSize: '0.8em'}}
+                  style={{fontSize: "0.8em"}}
                 >
                   {sector.name}
                 </Button>

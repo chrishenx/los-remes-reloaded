@@ -1,5 +1,5 @@
 import { PageProps } from "@/types/pageProps";
-import { GetStaticProps, InferGetStaticPropsType } from 'next';
+import { GetStaticProps, InferGetStaticPropsType } from "next";
 import { Button, Card, Divider, Flex, Typography, theme } from "antd";
 import { RoutesFinderForm } from "@/components/AppLayout/RoutesFinderForm";
 import Link from "next/link";
@@ -29,14 +29,18 @@ export default function Home(_props: InferGetStaticPropsType<typeof getStaticPro
       <Typography.Paragraph>
         Comienza buscando una ruta, seleccionando tus sectores de interés y un rango de grados de dificultad.
         O navega los sectores para conocerlos uno por uno.
-        <Link href="/about" style={{ marginLeft: 4, color: colorPrimaryText }}>
+        <Link href="/about"
+          style={{ marginLeft: 4, color: colorPrimaryText }}>
           Recomendaciones.
         </Link>
       </Typography.Paragraph>
-      <Card title="Encuentra tus rutas" headStyle={{ padding: 10 }} bodyStyle={{ padding: 4 }}>
+      <Card title="Encuentra tus rutas"
+        headStyle={{ padding: 10 }}
+        bodyStyle={{ padding: 4 }}>
         <RoutesFinderForm />
       </Card>
-      <Link href="/sectores" style={{ textAlign: "center", marginTop: 16 }} >
+      <Link href="/sectores"
+        style={{ textAlign: "center", marginTop: 16 }} >
         <Button 
           size="large" 
           type="default"

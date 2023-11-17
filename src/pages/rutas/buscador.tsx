@@ -1,8 +1,8 @@
-import { RouteSearchResults, RoutesFinderProps } from '@/components/RouteSearchResults';
-import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
-import { PageProps } from '@/types/pageProps';
-import { findSectorRoutes, parseRoutesSearchParams, getAllSectors } from '@/lib/climbing-utils';
-import { ParsedUrlQuery } from 'querystring';
+import { RouteSearchResults, RoutesFinderProps } from "@/components/RouteSearchResults";
+import { GetServerSideProps, InferGetServerSidePropsType } from "next";
+import { PageProps } from "@/types/pageProps";
+import { findSectorRoutes, parseRoutesSearchParams, getAllSectors } from "@/lib/climbing-utils";
+import { ParsedUrlQuery } from "querystring";
 
 
 export function RoutesFinderPage({ sectors } : InferGetServerSidePropsType<typeof getServerSideProps>) {

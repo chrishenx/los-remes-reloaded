@@ -2,8 +2,8 @@ import { Button, Divider, Drawer, Flex, Typography, theme } from "antd";
 import Link from "next/link";
 import {
   MenuFoldOutlined,
-} from '@ant-design/icons';
-import { BsFillMoonStarsFill, BsFillSunFill } from 'react-icons/bs';
+} from "@ant-design/icons";
+import { BsFillMoonStarsFill, BsFillSunFill } from "react-icons/bs";
 import { useContext } from "react";
 import { RoutesFinderForm } from "./RoutesFinderForm";
 import { ThemeModeContext } from "../ThemeModeContext";
@@ -25,11 +25,18 @@ export function AppDrawer({collapsed, onCollapse}: AppDrawerProps) {
   return (
     <Drawer
       title={
-        <Flex justify="space-between" align="center" gap="small" style={{ padding: 8 }}>
-          <Link href="/" onClick={onCollapse}>
-            <Image src={losRemesLogo} alt="LosRemes Reloaded" style={{ height: 70, width: 70 }} />
+        <Flex justify="space-between"
+          align="center"
+          gap="small"
+          style={{ padding: 8 }}>
+          <Link href="/"
+            onClick={onCollapse}>
+            <Image src={losRemesLogo}
+              alt="LosRemes Reloaded"
+              style={{ height: 70, width: 70 }} />
           </Link>
-          <Typography.Title level={4} style={{margin: 0}}>
+          <Typography.Title level={4}
+            style={{margin: 0}}>
             Los Remes Reloaded
           </Typography.Title>
           <Button 
@@ -49,7 +56,9 @@ export function AppDrawer({collapsed, onCollapse}: AppDrawerProps) {
     >
       <RoutesFinderForm onSearchClicked={onCollapse} />
       <Divider />
-      <Flex vertical align="center" style={{ background: colorBgElevated, padding: 8 }}>
+      <Flex vertical
+        align="center"
+        style={{ background: colorBgElevated, padding: 8 }}>
         <Button
           type="default"
           icon={themeMode === "light" ? <BsFillMoonStarsFill /> : <BsFillSunFill />}

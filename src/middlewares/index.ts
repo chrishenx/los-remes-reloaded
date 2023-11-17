@@ -8,7 +8,9 @@ export type ApiRouteHandlers = {
   put?: ApiRouteHandler;
 };
 
-export const API_METHODS = ["POST", "GET", "PUT"] as const;
+export const API_METHODS = ["POST",
+  "GET",
+  "PUT"] as const;
 export type APIMethod = typeof API_METHODS[number];
 export type HandlersMap = Partial<Record<APIMethod, ApiRouteHandler>>;
 

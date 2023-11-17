@@ -4,7 +4,17 @@ import { Button, Flex, Select, SelectProps, Slider, Typography, theme } from "an
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
-const gradesCatalog = ["8", "9+", "10-", "10+", "11-", "11+", "12-", "12+", "13-", "13+", "14-"];
+const gradesCatalog = ["8",
+  "9+",
+  "10-",
+  "10+",
+  "11-",
+  "11+",
+  "12-",
+  "12+",
+  "13-",
+  "13+",
+  "14-"];
 const defaultGradeMinIndex = 0;
 const defaultGradeMaxIndex = gradesCatalog.length - 1;
 
@@ -29,7 +39,7 @@ export function RoutesFinderForm({ onSearchClicked }: RoutesFinderProps) {
 
   const router = useRouter();
 
-  const options: SelectProps['options'] = sectors.map(sector => ({ label: sector.name, value: sector.id }));
+  const options: SelectProps["options"] = sectors.map(sector => ({ label: sector.name, value: sector.id }));
   const [selectedSectorIds, setSelectedSectorIds] = useState<string[]>([]);
   const [selectedGradeRange, setSelectedGradeRange] = useState<[number, number]>([defaultGradeMinIndex, defaultGradeMaxIndex]);
 
@@ -46,7 +56,10 @@ export function RoutesFinderForm({ onSearchClicked }: RoutesFinderProps) {
     setSelectedSectorIds(sectorIds);
     setSelectedGradeRange([gradeRangeMinIndex, gradeRangeMaxIndex]);
     
-  }, [router.query, router.query.sector_ids, router.query.min_grade, router.query.max_grade]);
+  }, [router.query,
+    router.query.sector_ids,
+    router.query.min_grade,
+    router.query.max_grade]);
 
   const mappedGradeRange = selectedGradeRange.map(gradeIndexToGrade);
   const isAllGradesSelected = selectedGradeRange[0] === 0 && selectedGradeRange[1] === gradesCatalog.length - 1;
@@ -57,7 +70,7 @@ export function RoutesFinderForm({ onSearchClicked }: RoutesFinderProps) {
 
   const handleRouteSearch = () => {
     router.push({
-      pathname: '/rutas/buscador',
+      pathname: "/rutas/buscador",
       query: {
         sector_ids: selectedSectorIds,
         min_grade: mappedGradeRange[0],
@@ -68,13 +81,15 @@ export function RoutesFinderForm({ onSearchClicked }: RoutesFinderProps) {
   };
 
   return (
-    <Flex vertical style={{ padding: 8, background: colorBgElevated }} gap={12}>
+    <Flex vertical
+      style={{ padding: 8, background: colorBgElevated }}
+      gap={12}>
       <Typography.Text type="secondary">Buscar rutas en</Typography.Text>
       <Select
         mode="multiple"
         allowClear
         size="large"
-        style={{ width: '100%' }}
+        style={{ width: "100%" }}
         placeholder="Todos los sectores"
         options={options}
         value={selectedSectorIds}
@@ -103,7 +118,8 @@ export function RoutesFinderForm({ onSearchClicked }: RoutesFinderProps) {
         </div>
       </div>
       <div style={{ textAlign: "center" }}>
-        <Button type="primary" onClick={handleRouteSearch}>Buscar</Button>
+        <Button type="primary"
+          onClick={handleRouteSearch}>Buscar</Button>
       </div>
     </Flex>
   );

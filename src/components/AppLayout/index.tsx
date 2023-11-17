@@ -1,12 +1,12 @@
-import { Button, Flex, Layout, Typography, theme } from 'antd';
-import { AppProps } from 'next/app';
-import { useState } from 'react';
+import { Button, Flex, Layout, Typography, theme } from "antd";
+import { AppProps } from "next/app";
+import { useState } from "react";
 import {
   MenuFoldOutlined,
   SearchOutlined,
-} from '@ant-design/icons';
-import { PageProps } from '@/types/pageProps';
-import { AppDrawer } from './Drawer';
+} from "@ant-design/icons";
+import { PageProps } from "@/types/pageProps";
+import { AppDrawer } from "./Drawer";
 
 const { Header, Content } = Layout;
 
@@ -20,31 +20,35 @@ export function AppLayout({ Component, pageProps }: AppLayoutProps) {
 
   return (
     <Layout style={{ height: "100vh", width: "100vw" }}>
-      <AppDrawer collapsed={collapsed} onCollapse={() => setCollapsed(true)} />
+      <AppDrawer collapsed={collapsed}
+        onCollapse={() => setCollapsed(true)} />
       <Layout>
         {/* 
           TODO Change header font to be more stylish
         */}
         <Header style={{ display: "flex", alignItems: "center", background: colorPrimaryBg, padding: 0 }}>
           {!pageProps.drawerDisabled && (
-             <Button
+            <Button
               type="text"
               icon={collapsed ? <SearchOutlined /> : <MenuFoldOutlined />}
               onClick={() => setCollapsed(!collapsed)}
               style={{
-                fontSize: '16px',
-                width: '58px',
+                fontSize: "16px",
+                width: "58px",
               }}
               size="large"
             />
           )}
-          <Flex style={{ color: colorText, marginLeft: 8, display: "inline-flex" }} vertical>
-            <Typography.Title level={3} style={{ margin: 0, marginTop: 0 }} >
+          <Flex style={{ color: colorText, marginLeft: 8, display: "inline-flex" }}
+            vertical>
+            <Typography.Title level={3}
+              style={{ margin: 0, marginTop: 0 }} >
               {pageProps.name}
             </Typography.Title>
             {
               pageProps.subtitle && (
-                <Typography.Title level={5} style={{ margin: 0 }} >
+                <Typography.Title level={5}
+                  style={{ margin: 0 }} >
                   {pageProps.subtitle}
                 </Typography.Title>
               )

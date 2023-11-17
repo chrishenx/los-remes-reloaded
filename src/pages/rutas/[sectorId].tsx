@@ -1,11 +1,11 @@
-import { Avatar, Button, Card, Carousel, Flex, Typography } from 'antd';
-import sectors from '@/lib/los-remes.json';
-import Image from 'next/image';
-import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
-import { PageProps } from '@/types/pageProps';
-import { RollbackOutlined } from '@ant-design/icons';
-import Link from 'next/link';
-import { LosRemesSector } from '@/types/los-remes-sectors';
+import { Avatar, Button, Card, Carousel, Flex, Typography } from "antd";
+import sectors from "@/lib/los-remes.json";
+import Image from "next/image";
+import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
+import { PageProps } from "@/types/pageProps";
+import { RollbackOutlined } from "@ant-design/icons";
+import Link from "next/link";
+import { LosRemesSector } from "@/types/los-remes-sectors";
 
 const imagesSrcPrefix = "https://www.losremes.com/";
 
@@ -25,16 +25,18 @@ export function RoutesPage({ sector }: InferGetStaticPropsType<typeof getStaticP
               bordered={false}
             >
               <Card.Meta 
-                avatar={<Avatar style={{marginTop: 8}} size="large">{idx + 1}</Avatar>}
+                avatar={<Avatar style={{marginTop: 8}}
+                  size="large">{idx + 1}</Avatar>}
                 title={
                   <Flex justify="space-between">
                     <Typography.Text>{route.name}</Typography.Text>
-                    <Link href={`/sectores?focus_sector_id=${sector.id}`} key={`${sector.id}_routes`}>
+                    <Link href={`/sectores?focus_sector_id=${sector.id}`}
+                      key={`${sector.id}_routes`}>
                       <Button 
                         key={`${route.id}_gobackto_${sector.id}`} 
                         type="default" 
                         icon={<RollbackOutlined />}
-                        style={{fontSize: '0.8em'}}
+                        style={{fontSize: "0.8em"}}
                       >
                         {sector.name}
                       </Button>
