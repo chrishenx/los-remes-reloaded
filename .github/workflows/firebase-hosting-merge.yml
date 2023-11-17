@@ -25,3 +25,4 @@ jobs:
           projectId: losremesreloaded
         env:
           FIREBASE_CLI_EXPERIMENTS: webframeworks
+          RECAPTCHA_SECRET_KEY: '${{ secrets.RECAPTCHA_SECRET_KEY }}'
