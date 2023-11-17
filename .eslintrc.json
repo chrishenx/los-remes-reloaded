@@ -35,6 +35,17 @@
           "multiple": 0
         }
       }
+    ],
+    "array-element-newline": [
+      "warn",
+      {
+        "multiline": true,
+        "minItems": 3
+      }
+    ],
+    "quotes": [
+      "error",
+      "double"
     ]
   },
   "plugins": [
