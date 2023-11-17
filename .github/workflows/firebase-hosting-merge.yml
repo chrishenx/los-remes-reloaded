@@ -26,3 +26,5 @@ jobs:
         env:
           FIREBASE_CLI_EXPERIMENTS: webframeworks
           RECAPTCHA_SECRET_KEY: '${{ secrets.RECAPTCHA_SECRET_KEY }}'
+          NEXT_PUBLIC_GOOGLE_ANALYTICS: '${{ vars.NEXT_PUBLIC_GOOGLE_ANALYTICS }}'
+          NEXT_PUBLIC_RECAPTCHA_SITE_KEY: '${{ vars.NEXT_PUBLIC_RECAPTCHA_SITE_KEY }}'
