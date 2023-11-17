@@ -1,10 +1,10 @@
-import fetch from 'node-fetch';
-import fs from 'fs';
-import * as tg from 'generic-type-guard';
-import { LosRemesRoute, LosRemesSector } from '@/types/los-remes-sectors';
-import { parseGrade, parseGradeRange } from '@/lib/climbing-utils';
+import fetch from "node-fetch";
+import fs from "fs";
+import * as tg from "generic-type-guard";
+import { LosRemesRoute, LosRemesSector } from "@/types/los-remes-sectors";
+import { parseGrade, parseGradeRange } from "@/lib/climbing-utils";
 
-const SECTORS_FILE_PATH = './src/lib/los-remes.json';
+const SECTORS_FILE_PATH = "./src/lib/los-remes.json";
 
 type RawRoute = {
   id: string;
@@ -23,23 +23,23 @@ type RawSector = {
 
 const isRawSector: tg.TypeGuard<RawSector> = (obj: unknown): obj is RawSector => {
   return tg.isObject(obj) && 
-    tg.hasProperty('id', tg.isString)(obj) && 
-    tg.hasProperty('name', tg.isString)(obj) && 
-    tg.hasProperty('gradeRange', tg.isString)(obj) && 
-    tg.hasProperty('routes', tg.isArray(tg.isAny))(obj);
+    tg.hasProperty("id", tg.isString)(obj) && 
+    tg.hasProperty("name", tg.isString)(obj) && 
+    tg.hasProperty("gradeRange", tg.isString)(obj) && 
+    tg.hasProperty("routes", tg.isArray(tg.isAny))(obj);
 };
 
 const isRawRoute: tg.TypeGuard<RawRoute> = (obj: unknown): obj is RawRoute => {
   return tg.isObject(obj) && 
-    tg.hasProperty('id', tg.isString)(obj) && 
-    tg.hasProperty('name', tg.isString)(obj) && 
-    tg.hasProperty('grade', tg.isString)(obj) && 
-    tg.hasProperty('numberOfDraws', tg.isNumber)(obj) && 
-    tg.hasProperty('height', tg.isNumber)(obj);
+    tg.hasProperty("id", tg.isString)(obj) && 
+    tg.hasProperty("name", tg.isString)(obj) && 
+    tg.hasProperty("grade", tg.isString)(obj) && 
+    tg.hasProperty("numberOfDraws", tg.isNumber)(obj) && 
+    tg.hasProperty("height", tg.isNumber)(obj);
 };
 
 function findImageSrcInRawSectors(rawSectors: string, routeId: string): string | undefined {
-  const imageSrcRegex = new RegExp(`img\\/${routeId}\\..{8}\\.jpg`, 'g');
+  const imageSrcRegex = new RegExp(`img\\/${routeId}\\..{8}\\.jpg`, "g");
   const imageSrcRegexExec = imageSrcRegex.exec(rawSectors);
   const imageSrcMatch = imageSrcRegexExec?.[0];
   return imageSrcMatch;
@@ -48,10 +48,10 @@ function findImageSrcInRawSectors(rawSectors: string, routeId: string): string |
 async function parseLosRemesSectors(rawSectors: string): Promise<LosRemesSector[]> {
   const sectorsRegex = /JSON\.parse\('(.+)'\)/g;
   const sectorsRegexExec = sectorsRegex.exec(rawSectors);
-  const sectorsMatch = sectorsRegexExec?.[1] ?? '[]';
+  const sectorsMatch = sectorsRegexExec?.[1] ?? "[]";
 
   const rawSectorsCleared = sectorsMatch.replace(/\\'/g, "'");
-  const sectors = JSON.parse(rawSectorsCleared ?? '[]');
+  const sectors = JSON.parse(rawSectorsCleared ?? "[]");
 
   const losRemesSectors = sectors.map((sector: unknown): LosRemesSector => {
     if (!isRawSector(sector)) {
@@ -81,7 +81,7 @@ async function parseLosRemesSectors(rawSectors: string): Promise<LosRemesSector[
 }
 
 async function fetchLosRemesSectors(): Promise<string> {
-  const response = await fetch('https://www.losremes.com/js/app.ecaf6955.js');
+  const response = await fetch("https://www.losremes.com/js/app.ecaf6955.js");
   const responseText = await response.text();
   return responseText;  
 }
@@ -94,7 +94,7 @@ async function scrapeLosRemes() {
     const sectors = await parseLosRemesSectors(rawSectors);
     const sectorsJson = JSON.stringify(sectors, null, 2);
     console.log("Writing los remes sectors to file...");
-    await fs.promises.writeFile(SECTORS_FILE_PATH, sectorsJson, 'utf8');
+    await fs.promises.writeFile(SECTORS_FILE_PATH, sectorsJson, "utf8");
     console.log("Done!");
   } catch (error) {
     console.error(error);
