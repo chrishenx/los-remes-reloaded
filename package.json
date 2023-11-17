@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@ant-design/cssinjs": "^1.17.2",
+    "@google-cloud/firestore": "^7.1.0",
     "antd": "^5.10.2",
     "generic-type-guard": "^4.0.2",
     "next": "13.5.6",
