@@ -1,10 +1,10 @@
-import React from 'react';
-import { Typography, theme } from 'antd';
-import { PageProps } from '@/types/pageProps';
-import { GetStaticProps } from 'next';
-import Link from 'next/link';
-import { CommentsBox } from '@/components/CommentsBox';
-import { ReCaptchaProvider } from 'next-recaptcha-v3';
+import React from "react";
+import { Typography, theme } from "antd";
+import { PageProps } from "@/types/pageProps";
+import { GetStaticProps } from "next";
+import Link from "next/link";
+import { CommentsBox } from "@/components/CommentsBox";
+import { ReCaptchaProvider } from "next-recaptcha-v3";
 
 export function AboutPage() {
   const {
@@ -15,7 +15,8 @@ export function AboutPage() {
     <ReCaptchaProvider language="es-419">
       <div style={{ padding: 16 }}>
         <Typography.Paragraph>
-          <Link href="/" style={{ marginRight: 4, color: colorPrimaryText }}>Los Remes Reloaded</Link>
+          <Link href="/"
+            style={{ marginRight: 4, color: colorPrimaryText }}>Los Remes Reloaded</Link>
           fue creado como un proyecto personal para poder explorar las rutas de Los Remedios por grado de dificultad.
           Esto permitiría a cualquiera que vaya a la zona, poder elegir una ruta que se adapte a su nivel de experiencia.
         </Typography.Paragraph>
