@@ -9,6 +9,7 @@ import { ThemeModeProvider, defaultThemeMode } from "@/components/ThemeModeConte
 import Head from "next/head";
 import { PageProps } from "@/types/pageProps";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
+import { GoogleAdsense } from "@/components/GoogleAdsense";
 
 export function App(props: AppProps<PageProps>) {
   const [themeMode, setThemeMode] = useState<MenuTheme>(defaultThemeMode);
@@ -16,6 +17,7 @@ export function App(props: AppProps<PageProps>) {
   return (
     <ConfigProvider theme={{...theme, algorithm: themeMode === "light" ? antdTheme.defaultAlgorithm : antdTheme.darkAlgorithm}}>
       <GoogleAnalytics />
+      <GoogleAdsense />
       <Head>
         <title>
           {props.pageProps.name}
@@ -23,7 +25,7 @@ export function App(props: AppProps<PageProps>) {
         <meta name="viewport"
           content="width=device-width, initial-scale=1.0" />
         <meta name="google-adsense-account"
-          content="ca-pub-4113627187728759" />
+          content={process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_ACCOUNt} />
       </Head>
       <ThemeModeProvider themeMode={themeMode}
         toggleThemeMode={toggleThemeMode}>
