@@ -25,7 +25,7 @@ export function App(props: AppProps<PageProps>) {
         <meta name="viewport"
           content="width=device-width, initial-scale=1.0" />
         <meta name="google-adsense-account"
-          content={process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_ACCOUNt} />
+          content={process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_ACCOUNT} />
       </Head>
       <ThemeModeProvider themeMode={themeMode}
         toggleThemeMode={toggleThemeMode}>
