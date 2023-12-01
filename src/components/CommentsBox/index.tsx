@@ -107,7 +107,7 @@ export function CommentsBox() {
       </Form.Item>
       <Form.Item>
         <Button type="primary" htmlType="submit" size="large"
-          disabled={true/* isLoading */}>Enviar</Button>
+          disabled={isLoading}>Enviar</Button>
       </Form.Item>
     </Form>
   );

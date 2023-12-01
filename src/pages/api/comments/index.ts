@@ -1,5 +1,5 @@
 // pages/api/handleContactFormSubmitted.ts
-import { NextApiRequest, NextApiResponse } from "next";
+import { NextApiResponse } from "next";
 import { RawCommentsSubmisionSchema } from "@/models/Comments";
 import { ParsingBodyError } from "@/models/ParsingBodyError";
 import { parseRawBody } from "@/lib/api-utils";
@@ -7,6 +7,7 @@ import * as z from "zod";
 import { apiRouteMiddleware } from "@/middlewares";
 import { reCatpchaTokenValidationMiddleware } from "@/middlewares/reCaptchaTokenValidation";
 import { storeComments } from "@/services/api/comments";
+import { RawNextApiRequest } from "@/types/next-related";
 
 const isCommentSubmittionWithReCaptcha = z.object({
   commentSubmission: RawCommentsSubmisionSchema,
@@ -19,11 +20,10 @@ export function parseRawCommentsWithReCaptcha(rawCommentsWithReCaptcha: unknown)
   return parseRawBody(rawCommentsWithReCaptcha, isCommentSubmittionWithReCaptcha); 
 }
 
-async function handleContactFormSubmitted(req: NextApiRequest, res: NextApiResponse) {
+async function handleContactFormSubmitted(req: RawNextApiRequest, res: NextApiResponse) {
   try {
-    // TODO Remove this response when deployment of API routes is validated
-    return res.status(200).json({ message: "OK" });
     // TODO Integrate into a declarative interface, a higher order function that takes n middlewares and applies them in order
+    
     const { commentSubmission } = parseRawCommentsWithReCaptcha(req.body);
 
     await reCatpchaTokenValidationMiddleware(req, res);
@@ -32,6 +32,7 @@ async function handleContactFormSubmitted(req: NextApiRequest, res: NextApiRespo
     
     return res.status(200).json(storedComments);
   } catch (error) {
+    console.error("Error in handleContactFormSubmitted:", error);
     if (error instanceof ParsingBodyError) {
       return res.status(400).json({ message: error.message });
     }
@@ -44,3 +45,9 @@ const CommentsApiRoute = apiRouteMiddleware({
 });
 
 export default CommentsApiRoute;
+
+export const config = {
+  api: {
+    bodyParser: false,
+  },
+};

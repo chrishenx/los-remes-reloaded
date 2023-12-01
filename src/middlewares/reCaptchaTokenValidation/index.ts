@@ -1,7 +1,8 @@
-import { NextApiRequest, NextApiResponse } from "next";
+import { NextApiResponse } from "next";
 import fetch from "node-fetch";
 import { ReCaptchaBodySchema, ReCaptchaError, ReCaptchaErrorCode, ReCaptchaValidationParams, ReCaptchaValidationResponseSchema } from "./models";
 import { z } from "zod";
+import { RawNextApiRequest } from "@/types/next-related";
 
 // Reference: https://developers.google.com/recaptcha/docs/verify
 async function validateReCaptchaToken({ reCaptchaToken, secret, remoteIP }: ReCaptchaValidationParams) {
@@ -34,7 +35,7 @@ async function validateReCaptchaToken({ reCaptchaToken, secret, remoteIP }: ReCa
   } */
 }
 
-export async function reCatpchaTokenValidationMiddleware(req: NextApiRequest, res: NextApiResponse) {
+export async function reCatpchaTokenValidationMiddleware(req: RawNextApiRequest, res: NextApiResponse) {
   if (!process.env.RECAPTCHA_SECRET_KEY) {
     return res.status(500).json({ message: "Internal server error" });
   }
