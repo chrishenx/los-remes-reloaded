@@ -6,6 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { GiBleedingEye } from "react-icons/gi";
 import losRemesLogo from "../../public/final-logo-reduced.png";
+import { About } from "@/components/About";
 
 export default function Home(_props: InferGetStaticPropsType<typeof getStaticProps>) {
   const {
@@ -51,23 +52,19 @@ export default function Home(_props: InferGetStaticPropsType<typeof getStaticPro
         </Button>
       </Link>
       <Divider orientationMargin={30} />
-      <Typography.Text style={{textAlign: "right"}}>
-        Hecho con amor por
-        <a
-          style={{ marginLeft: 4, color: colorPrimaryText}}
-          href="https://duendevelopments.mydurable.com/" 
-          target="_blank" 
-          rel="noreferrer">
-            Duende Developments
-        </a>
-      </Typography.Text>
-      <div style={{textAlign: "right"}}>
-        <Button type="default">
-          <Link href="/about">
-            Más información
-          </Link>
-        </Button>
-      </div>
+      <About containerStyles={{ padding: 2, paddingBottom: 24 }} />
+      <footer style={{ textAlign: "right", paddingBottom: 40 }}>
+        <Typography.Text>
+          Hecho con amor por
+          <a
+            style={{ marginLeft: 4, color: colorPrimaryText}}
+            href="https://duendevelopments.mydurable.com/" 
+            target="_blank" 
+            rel="noreferrer">
+              Duende Developments
+          </a>
+        </Typography.Text>
+      </footer>
     </Flex>
   );
 }

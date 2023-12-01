@@ -27,3 +27,7 @@
   inset-inline-start: 4px!important;
   inset-block-start: -5px!important;
 }
+
+.grecaptcha-badge { 
+  visibility: hidden !important;
+}
