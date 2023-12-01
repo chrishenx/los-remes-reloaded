@@ -1,8 +1,9 @@
 # TODO List
-1. Log errors in `catch` blocks.
-2. Drawer open is not available in SSR:
+1. Implement cloud function to store comments.
+2. Log errors in `catch` blocks.
+3. Drawer open is not available in SSR:
   - Warning: Drawer with 'open' in SSR is not work since no place to createPortal. Please move to 'useEffect' instead.
-3. Replace hardcoded comments section settings, like min and max chars in a given text field.
+4. Replace hardcoded comments section settings, like min and max chars in a given text field.
   - @see src/components/CommentsBox/index.tsx
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
