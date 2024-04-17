@@ -13,7 +13,7 @@
   "dependencies": {
     "@ant-design/cssinjs": "^1.17.2",
     "@google-cloud/firestore": "^7.1.0",
-    "antd": "^5.10.2",
+    "antd": "^5.16.2",
     "generic-type-guard": "^4.0.2",
     "next": "13.4.2",
     "next-recaptcha-v3": "^1.3.0",
