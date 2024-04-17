@@ -88,8 +88,8 @@ export const parseRoutesSearchParams = (searchParamsQuery: ParsedUrlQuery): Rout
   // TODO Validate types or query params
   const sectorIdsArray = typeof searchParamsQuery.sector_ids === "string" ? [searchParamsQuery.sector_ids] : searchParamsQuery.sector_ids as string[];
   const sectorIds = new Set(sectorIdsArray ?? []);
-  const filteredSectors = sectors
-    .filter((sector) => sectorIds.has(sector.id));
+  const filteredSectors = sectorIds.size > 0 ? sectors
+    .filter((sector) => sectorIds.has(sector.id)) : sectors; // If no sector_ids are provided, return all sectors
 
   const rawMinGrade = searchParamsQuery.min_grade;
   const rawMaxGrade = searchParamsQuery.max_grade;
